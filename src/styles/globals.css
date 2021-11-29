@@ -1,16 +1,27 @@
+/* stylelint-disable selector-id-pattern */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+html {
+  @apply antialiased;
+
+  background-color: #fef9f3;
+  color: #191818;
+  scroll-behavior: smooth;
+}
+
 html,
-body {
-  padding: 0;
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen,
-    Ubuntu, Cantarell, 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;
+body,
+#__next {
+  @apply min-h-full h-full;
 }
 
-a {
-  color: inherit;
-  text-decoration: none;
-}
+#__next {
+  @apply h-auto;
+  @apply flex flex-col;
 
-* {
-  box-sizing: border-box;
+  & a {
+    @apply inline-block;
+  }
 }
