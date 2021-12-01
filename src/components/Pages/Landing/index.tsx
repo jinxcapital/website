@@ -21,6 +21,15 @@ const Landing = () => {
                 API
               </a>
             </li>
+            <li>
+              <a
+                href="https://github.com/jinxcapital"
+                target="_blank"
+                rel="noreferrer"
+              >
+                GitHub
+              </a>
+            </li>
           </ul>
         </nav>
       </header>
