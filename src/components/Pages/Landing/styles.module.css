@@ -51,6 +51,12 @@
 
     & .logo {
       @apply mb-20;
+
+      & img {
+        @apply w-full;
+
+        max-width: 600px;
+      }
     }
   }
 

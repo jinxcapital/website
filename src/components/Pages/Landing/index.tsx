@@ -1,5 +1,4 @@
 import Head from 'next/head';
-import Image from 'next/image';
 
 import styles from './styles.module.css';
 
@@ -55,7 +54,7 @@ const Landing = () => {
 
       <main>
         <div className={styles.logo}>
-          <Image
+          <img
             src="/jinx-capital.svg"
             alt="JINX CAPITAL"
             width="600"
