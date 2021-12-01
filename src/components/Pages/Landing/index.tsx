@@ -21,33 +21,6 @@ const Landing = () => {
                 API
               </a>
             </li>
-            <li>
-              <a
-                href="https://garbage.jinx.capital"
-                target="_blank"
-                rel="noreferrer"
-              >
-                Garbage
-              </a>
-            </li>
-            <li>
-              <a
-                href="https://twitter.com/jinxcapital"
-                target="_blank"
-                rel="noreferrer"
-              >
-                Twitter
-              </a>
-            </li>
-            <li>
-              <a
-                href="https://ftx.com/#a=jinxcapital"
-                target="_blank"
-                rel="noreferrer"
-              >
-                Trade on FTX
-              </a>
-            </li>
           </ul>
         </nav>
       </header>
