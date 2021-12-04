@@ -36,19 +36,28 @@ const Landing = () => {
 
       <main>
         <div className={styles.logo}>
+          <img src="/jinx-capital.svg" alt="JINX CAPITAL" />
+        </div>
+        <div className={styles.chart}>
           <img
-            src="/jinx-capital.svg"
-            alt="JINX CAPITAL"
-            width="600"
-            height="278"
+            src="https://api.jinx.capital/chart/btc:usd.jpg"
+            alt="btc:usd.jpg"
+            width="640"
+            height="360"
+          />
+          <img
+            src="https://api.jinx.capital/chart/eth:usd.jpg"
+            alt="eth:usd.jpg"
+            width="640"
+            height="360"
+          />
+          <img
+            src="https://api.jinx.capital/chart/ltc:usd.jpg"
+            alt="ltc:usd.jpg"
+            width="640"
+            height="360"
           />
         </div>
-
-        <p>
-          <a href="mailto:jinxcapital@protonmail.com">
-            jinxcapital@protonmail.com
-          </a>
-        </p>
       </main>
 
       <footer>&copy; {new Date().getFullYear()} Jinx Capital</footer>

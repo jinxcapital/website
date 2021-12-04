@@ -47,7 +47,7 @@
 
   & main {
     @apply flex-1;
-    @apply my-32;
+    @apply my-24;
 
     & .logo {
       @apply mb-20;
@@ -55,7 +55,21 @@
       & img {
         @apply w-full;
 
-        max-width: 600px;
+        max-width: 500px;
+      }
+    }
+
+    & .chart {
+      @apply overflow-x-auto whitespace-nowrap;
+
+      scroll-snap-type: x mandatory;
+
+      & img {
+        @apply inline-block;
+        @apply m-4;
+        @apply border border-dotted border-black;
+
+        scroll-snap-align: start;
       }
     }
   }
