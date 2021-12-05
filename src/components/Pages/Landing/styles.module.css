@@ -1,63 +1,27 @@
 .container {
   @apply flex-1;
   @apply flex flex-col;
-  @apply px-24 py-16;
+  @apply px-20 py-16;
 
   & header {
-    @apply text-right text-sm;
-    @apply uppercase;
+    @apply flex justify-between;
 
-    letter-spacing: 0.15em;
-    word-spacing: 0.15em;
+    & .logo {
+      @apply w-full;
 
-    & li {
-      @apply inline-block;
-
-      & + li {
-        @apply ml-5;
-      }
+      max-width: 120px;
     }
 
-    & a {
-      @apply font-medium;
-      @apply py-0.5;
-      @apply relative;
-
-      &::after {
-        @apply absolute left-0 bottom-0;
-        @apply transition duration-200 ease-in-out;
-        @apply transform-gpu scale-x-0;
-
-        content: '';
-        height: 2px;
-        width: calc(100% - 2px);
-        background-color: #191818;
-        transform-origin: 100% 50%;
-      }
-
+    & nav a {
       &:hover {
-        &::after {
-          @apply scale-x-100;
-
-          transform-origin: 0 50%;
-        }
+        @apply underline;
       }
     }
   }
 
   & main {
     @apply flex-1;
-    @apply my-24;
-
-    & .logo {
-      @apply mb-20;
-
-      & img {
-        @apply w-full;
-
-        max-width: 500px;
-      }
-    }
+    @apply mt-24;
 
     & .chart {
       @apply overflow-x-auto whitespace-nowrap;

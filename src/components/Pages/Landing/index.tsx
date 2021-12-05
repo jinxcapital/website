@@ -1,4 +1,5 @@
 import Head from 'next/head';
+import Link from 'next/link';
 
 import styles from './styles.module.css';
 
@@ -10,6 +11,16 @@ const Landing = () => {
       </Head>
 
       <header>
+        <Link href="/">
+          <a>
+            <img
+              src="/jinx-capital.svg"
+              alt="JINX CAPITAL"
+              className={styles.logo}
+            />
+          </a>
+        </Link>
+
         <nav>
           <ul>
             <li>
@@ -26,9 +37,6 @@ const Landing = () => {
       </header>
 
       <main>
-        <div className={styles.logo}>
-          <img src="/jinx-capital.svg" alt="JINX CAPITAL" />
-        </div>
         <div className={styles.chart}>
           <img
             src="https://api.jinx.capital/chart/btc:usd.jpg"
