@@ -35,6 +35,7 @@ const percentageFormatter = new Intl.NumberFormat('en-US', {
 type Coin = {
   id: string;
   name: string;
+  symbol: string;
   price: number;
   percentageChange24h: number;
 };
@@ -86,7 +87,7 @@ const Landing = () => {
           <div className={styles.scroller}>
             <ul>
               {[...coins, ...coins].map((coin: Coin, index: number) => (
-                <li key={`coin-${coin.id}:${index}`}>
+                <li key={`scroller-coin-${coin.id}:${index}`}>
                   <strong>{coin.name}</strong>{' '}
                   {coin.price > 1.05
                     ? currencyFormatter.format(coin.price)
@@ -103,25 +104,23 @@ const Landing = () => {
       </header>
 
       <main>
-        <div className={styles.chart}>
-          <img
-            src="https://api.jinx.capital/chart/btc:usd.jpg"
-            alt="btc:usd.jpg"
-            width="640"
-            height="360"
-          />
-          <img
-            src="https://api.jinx.capital/chart/eth:usd.jpg"
-            alt="eth:usd.jpg"
-            width="640"
-            height="360"
-          />
-          <img
-            src="https://api.jinx.capital/chart/ltc:usd.jpg"
-            alt="ltc:usd.jpg"
-            width="640"
-            height="360"
-          />
+        <div className={styles.charts}>
+          {coins
+            .filter(
+              (coin: Coin) =>
+                !['usdt', 'usdc', 'dai', 'ust', 'busd'].includes(coin.symbol),
+            )
+            .slice(0, 10)
+            .map((coin: Coin) => (
+              <img
+                key={`chart-${coin}`}
+                src={`https://api.jinx.capital/chart/${coin.symbol}:usdt.jpg`}
+                alt={`${coin.symbol}:usdt.jpg`}
+                loading="lazy"
+                width="640"
+                height="360"
+              />
+            ))}
         </div>
       </main>
 
