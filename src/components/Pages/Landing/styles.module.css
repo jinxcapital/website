@@ -55,9 +55,9 @@
 
   & main {
     @apply flex-1;
-    @apply mt-24;
+    @apply mt-16;
 
-    & .chart {
+    & .charts {
       @apply overflow-x-auto whitespace-nowrap;
 
       scroll-snap-type: x mandatory;
