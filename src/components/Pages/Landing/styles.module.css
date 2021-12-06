@@ -1,20 +1,54 @@
+@keyframes scroll {
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
 .container {
   @apply flex-1;
   @apply flex flex-col;
   @apply px-20 py-16;
 
   & header {
-    @apply flex justify-between;
+    & nav {
+      @apply flex justify-between;
 
-    & .logo {
-      @apply w-full;
+      & .logo {
+        @apply w-full;
 
-      max-width: 120px;
+        max-width: 120px;
+      }
+
+      & a {
+        &:hover {
+          @apply underline;
+        }
+      }
     }
 
-    & nav a {
-      &:hover {
-        @apply underline;
+    & .scroller {
+      @apply relative;
+      @apply mt-8;
+      @apply border border-black border-l-0 border-r-0;
+      @apply overflow-hidden whitespace-nowrap;
+      @apply text-sm;
+      @apply transform-gpu;
+
+      & ul {
+        @apply inline-block;
+        @apply transform-gpu;
+
+        animation: scroll 60s linear infinite 2s;
+
+        &:hover {
+          animation-play-state: paused;
+        }
+      }
+
+      & li {
+        @apply transform-gpu;
+        @apply inline-block;
+        @apply py-2 px-2.5;
       }
     }
   }
