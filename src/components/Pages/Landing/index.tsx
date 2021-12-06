@@ -42,7 +42,7 @@ type Coin = {
 
 const Landing = () => {
   const { data } = useSWR('https://api.jinx.capital/coins-top', fetcher, {
-    refreshInterval: 10000,
+    refreshInterval: 15000,
   });
 
   const coins = useMemo(() => {
