@@ -41,7 +41,7 @@ type Coin = {
 
 const Landing = () => {
   const { data } = useSWR('http://localhost:3001/coins-top', fetcher, {
-    refreshInterval: 15,
+    refreshInterval: 10000,
   });
 
   const coins = useMemo(() => {
