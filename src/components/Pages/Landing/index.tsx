@@ -41,7 +41,7 @@ type Coin = {
 };
 
 const Landing = () => {
-  const { data } = useSWR('http://localhost:3001/coins-top', fetcher, {
+  const { data } = useSWR('https://api.jinx.capital/coins-top', fetcher, {
     refreshInterval: 10000,
   });
 
