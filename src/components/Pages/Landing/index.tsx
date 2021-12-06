@@ -40,7 +40,9 @@ type Coin = {
 };
 
 const Landing = () => {
-  const { data } = useSWR('http://localhost:3001/coins-top', fetcher);
+  const { data } = useSWR('http://localhost:3001/coins-top', fetcher, {
+    refreshInterval: 15,
+  });
 
   const coins = useMemo(() => {
     if (!data) {
