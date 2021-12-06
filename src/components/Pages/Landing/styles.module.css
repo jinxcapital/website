@@ -9,6 +9,14 @@
   @apply flex flex-col;
   @apply px-20 py-16;
 
+  @media (max-width: 768px) {
+    @apply px-12 py-10;
+  }
+
+  @media (max-width: 640px) {
+    @apply px-6 py-8;
+  }
+
   & header {
     & nav {
       @apply flex justify-between;
@@ -56,6 +64,14 @@
   & main {
     @apply flex-1;
     @apply mt-16;
+
+    @media (max-width: 768px) {
+      @apply mt-10;
+    }
+
+    @media (max-width: 640px) {
+      @apply mt-6;
+    }
 
     & .charts {
       @apply overflow-x-auto whitespace-nowrap;
