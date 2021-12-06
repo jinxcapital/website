@@ -31,6 +31,11 @@ const percentageFormatter = new Intl.NumberFormat('en-US', {
   maximumFractionDigits: 2,
   signDisplay: 'always',
 });
+const bigNumberFormatter = Intl.NumberFormat('en-US', {
+  notation: 'compact',
+  maximumFractionDigits: 1,
+  signDisplay: 'always',
+});
 
 type Coin = {
   id: string;
@@ -50,8 +55,20 @@ const Landing = () => {
       return [];
     }
 
-    return data?.data?.slice(0, 25);
+    return data?.data?.slice(0, 15);
   }, [data]);
+
+  const responseExchangeNetflow = useSWR(
+    'https://api.jinx.capital/exchange-flows/bitcoin',
+    fetcher,
+    {
+      refreshInterval: 30000,
+    },
+  );
+
+  const exchangeNetflow = useMemo(() => {
+    return responseExchangeNetflow.data?.data?.total?.change?.day;
+  }, [responseExchangeNetflow]);
 
   return (
     <div className={styles.container}>
@@ -86,6 +103,13 @@ const Landing = () => {
         {!!coins.length && (
           <div className={styles.scroller}>
             <ul>
+              {exchangeNetflow && (
+                <li>
+                  <strong>Exchange netflow</strong>{' '}
+                  {exchangeNetflow > 0 ? '▲' : '▼'}{' '}
+                  {bigNumberFormatter.format(exchangeNetflow)} BTC
+                </li>
+              )}
               {[...coins, ...coins].map((coin: Coin, index: number) => (
                 <li key={`scroller-coin-${coin.id}:${index}`}>
                   <strong>{coin.name}</strong>{' '}

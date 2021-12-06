@@ -46,7 +46,7 @@
         @apply inline-block;
         @apply transform-gpu;
 
-        animation: scroll 60s linear infinite 2s;
+        animation: scroll 40s linear infinite 2s;
 
         &:hover {
           animation-play-state: paused;
