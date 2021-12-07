@@ -27,10 +27,8 @@
         max-width: 120px;
       }
 
-      & a {
-        &:hover {
-          @apply underline;
-        }
+      & a:hover {
+        @apply underline;
       }
     }
 
@@ -87,9 +85,13 @@
 
       scroll-snap-type: x mandatory;
 
-      & img {
+      & .link {
         @apply inline-block;
         @apply m-4;
+      }
+
+      & img {
+        @apply inline-block;
         @apply border border-dotted border-black;
 
         scroll-snap-align: start;
