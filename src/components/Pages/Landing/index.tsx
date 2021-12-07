@@ -1,6 +1,7 @@
+import { usePreviousValue } from 'beautiful-react-hooks';
 import Head from 'next/head';
 import Link from 'next/link';
-import { useMemo } from 'react';
+import { useEffect, useMemo } from 'react';
 import useSWR from 'swr';
 import fetch from 'unfetch';
 
@@ -57,6 +58,14 @@ const Landing = () => {
 
     return data?.data?.slice(0, 15);
   }, [data]);
+  const previousCoins = usePreviousValue(coins);
+
+  useEffect(() => {
+    console.log({ coins });
+  }, [coins]);
+  useEffect(() => {
+    console.log({ previousCoins });
+  }, [previousCoins]);
 
   const responseExchangeNetflow = useSWR(
     'https://api.jinx.capital/exchange-flows/bitcoin',
@@ -154,23 +163,45 @@ const Landing = () => {
                 !['usdt', 'usdc', 'dai', 'ust', 'busd'].includes(coin.symbol),
             )
             .slice(0, 10)
-            .map((coin: Coin) => (
-              <a
-                className={styles.link}
-                href={`https://api.jinx.capital/chart/${coin.symbol}:usdt.jpg`}
-                key={`chart-${coin.id}`}
-                target="_blank"
-                rel="noreferrer"
-              >
-                <img
-                  src={`https://api.jinx.capital/chart/${coin.symbol}:usdt.jpg`}
-                  alt={`${coin.symbol}:usdt.jpg`}
-                  loading="lazy"
-                  width="640"
-                  height="360"
-                />
-              </a>
-            ))}
+            .map((coin: Coin) => {
+              const previousCoin = (previousCoins || []).find(
+                (previousCoin: Coin) => previousCoin.id === coin.id,
+              );
+
+              if (coin.id === 'bitcoin') {
+                console.log(coin?.price, previousCoin?.price);
+              }
+
+              return (
+                <a
+                  className={styles.link}
+                  href={`https://api.jinx.capital/chart/${coin.symbol}:usdt.jpg`}
+                  key={`chart-${coin.id}`}
+                  target="_blank"
+                  rel="noreferrer"
+                >
+                  <img
+                    src={`https://api.jinx.capital/chart/${
+                      (previousCoin || coin).symbol
+                    }:usdt.jpg?${(previousCoin || coin).price}`}
+                    alt={`${(previousCoin || coin).symbol}:usdt.jpg`}
+                    loading="lazy"
+                    width="640"
+                    height="360"
+                  />
+                  {previousCoin && (
+                    <img
+                      src={`https://api.jinx.capital/chart/${coin.symbol}:usdt.jpg?${coin.price}`}
+                      alt={`${coin.symbol}:usdt.jpg`}
+                      loading="lazy"
+                      width="640"
+                      height="360"
+                      className={styles.new}
+                    />
+                  )}
+                </a>
+              );
+            })}
         </div>
       </main>
 
