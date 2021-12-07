@@ -141,18 +141,16 @@
 
     & .charts {
       @apply overflow-x-auto whitespace-nowrap;
+      @apply -mx-2;
 
       scroll-snap-type: x mandatory;
 
       & .link {
         @apply inline-block;
         @apply relative;
+        @apply mx-2;
 
-        scroll-snap-align: start;
-
-        & + .link {
-          @apply ml-4;
-        }
+        scroll-snap-align: center;
       }
 
       & img {
