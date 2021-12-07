@@ -63,7 +63,16 @@
 
   & main {
     @apply flex-1;
-    @apply mt-16;
+
+    & .exchangeNetFlow {
+      @apply mt-6 mb-6;
+      @apply text-sm text-center;
+
+      & li {
+        @apply inline-block;
+        @apply mt-2 px-3;
+      }
+    }
 
     @media (max-width: 768px) {
       @apply mt-10;
