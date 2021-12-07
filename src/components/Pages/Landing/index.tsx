@@ -79,10 +79,19 @@ const Landing = () => {
     return responseExchangeNetflow.data?.data?.total;
   }, [responseExchangeNetflow]);
 
+  const bitcoin = useMemo(
+    () => coins.find((coin: Coin) => coin.id === 'bitcoin'),
+    [coins],
+  );
+
   return (
     <div className={styles.container}>
       <Head>
-        <title>Jinx Capital</title>
+        <title>
+          Jinx Capital
+          {!!bitcoin &&
+            ` - Bitcoin: ${currencyFormatter.format(bitcoin.price)}`}
+        </title>
       </Head>
 
       <header>
