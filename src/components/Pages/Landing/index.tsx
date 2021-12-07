@@ -10,17 +10,23 @@ import styles from './styles.module.css';
 
 const fetcher = (url: string) => fetch(url).then((r) => r.json());
 
-const currencyFormatter = new Intl.NumberFormat('en-US', {
+const currencyFormatterBig = new Intl.NumberFormat('en-US', {
   style: 'currency',
   currency: 'USD',
   minimumFractionDigits: 0,
+  maximumFractionDigits: 0,
+});
+const currencyFormatter = new Intl.NumberFormat('en-US', {
+  style: 'currency',
+  currency: 'USD',
+  minimumFractionDigits: 2,
   maximumFractionDigits: 2,
 });
 const currencyFormatterSmall = new Intl.NumberFormat('en-US', {
   style: 'currency',
   currency: 'USD',
   minimumFractionDigits: 2,
-  maximumFractionDigits: 2,
+  maximumFractionDigits: 4,
 });
 const currencyFormatterExtraSmall = new Intl.NumberFormat('en-US', {
   style: 'currency',
@@ -30,6 +36,7 @@ const currencyFormatterExtraSmall = new Intl.NumberFormat('en-US', {
 });
 const percentageFormatter = new Intl.NumberFormat('en-US', {
   style: 'percent',
+  minimumFractionDigits: 2,
   maximumFractionDigits: 2,
   signDisplay: 'always',
 });
@@ -213,9 +220,11 @@ const Landing = () => {
                   className={styles.coin}
                 >
                   <strong>{coin.name}</strong>{' '}
-                  {coin.price > 1.05
+                  {coin.price >= 1000
+                    ? currencyFormatterBig.format(coin.price)
+                    : coin.price >= 0.1
                     ? currencyFormatter.format(coin.price)
-                    : coin.price > 0.01
+                    : coin.price >= 0.01
                     ? currencyFormatterSmall.format(coin.price)
                     : currencyFormatterExtraSmall.format(coin.price)}{' '}
                   {coin.percentageChange24h > 0 ? '▲' : '▼'}{' '}
