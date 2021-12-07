@@ -84,14 +84,50 @@ const Landing = () => {
     [coins],
   );
 
+  const title = useMemo(() => {
+    if (bitcoin) {
+      return `Jinx Capital - Bitcoin: ${currencyFormatter.format(
+        bitcoin.price,
+      )}`;
+    }
+
+    return 'Jinx Capital';
+  }, [bitcoin]);
+
+  const description = useMemo(() => {
+    if (bitcoin) {
+      return `Jinx Capital is a fictive cryptonative investment fund of @0xpowder. Btw the price of Bitcoin changed with ${percentageFormatter.format(
+        bitcoin.percentageChange24h / 100,
+      )} in the last 24h and is currently sitting at ${currencyFormatter.format(
+        bitcoin.price,
+      )}!`;
+    }
+
+    return 'Jinx Capital is a fictive cryptonative investment fund of @0xpowder.';
+  }, [bitcoin]);
+
   return (
     <div className={styles.container}>
       <Head>
-        <title>
-          Jinx Capital
-          {!!bitcoin &&
-            ` - Bitcoin: ${currencyFormatter.format(bitcoin.price)}`}
-        </title>
+        <title>{title}</title>
+        <meta name="title" content={title} />
+        <meta name="description" content={description} />
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:title" content={title} />
+        <meta name="twitter:description" content={description} />
+        <meta name="twitter:site" content="@jinxcapital" />
+        <meta name="twitter:creator" content="@0xpowder" />
+        <meta
+          name="twitter:image"
+          content="https://api.jinx.capital/chart/btc:usd.jpg"
+        />
+        <meta property="og:title" content={title} />
+        <meta property="og:description" content={description} />
+        <meta
+          property="og:image"
+          content="https://api.jinx.capital/chart/btc:usd.jpg"
+        />
+        <meta property="og:url" content="https://jinx.capital" />
       </Head>
 
       <header>
