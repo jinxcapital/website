@@ -155,14 +155,21 @@ const Landing = () => {
             )
             .slice(0, 10)
             .map((coin: Coin) => (
-              <img
-                key={`chart-${coin}`}
-                src={`https://api.jinx.capital/chart/${coin.symbol}:usdt.jpg`}
-                alt={`${coin.symbol}:usdt.jpg`}
-                loading="lazy"
-                width="640"
-                height="360"
-              />
+              <a
+                className={styles.link}
+                href={`https://api.jinx.capital/chart/${coin.symbol}:usdt.jpg`}
+                key={`chart-${coin.id}`}
+                target="_blank"
+                rel="noreferrer"
+              >
+                <img
+                  src={`https://api.jinx.capital/chart/${coin.symbol}:usdt.jpg`}
+                  alt={`${coin.symbol}:usdt.jpg`}
+                  loading="lazy"
+                  width="640"
+                  height="360"
+                />
+              </a>
             ))}
         </div>
       </main>
