@@ -123,7 +123,7 @@ const Landing = () => {
       <main>
         {exchangeNetflow && (
           <div className={styles.exchangeNetFlow}>
-            <strong>Bitcoin exchange netflows</strong>{' '}
+            <strong>Bitcoin exchange netflow</strong>{' '}
             <ul>
               <li>
                 <strong>24H</strong>{' '}
