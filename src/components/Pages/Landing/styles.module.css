@@ -61,23 +61,28 @@
 
   & main {
     @apply flex-1;
+    @apply mt-6;
+
+    @media (max-width: 640px) {
+      @apply mt-4;
+    }
 
     & .exchangeNetFlow {
-      @apply mt-6 mb-6;
+      @apply mt-2 mb-8;
       @apply text-sm text-center;
+
+      @media (max-width: 640px) {
+        @apply mb-4;
+      }
 
       & li {
         @apply inline-block;
         @apply mt-2 px-3;
+
+        @media (max-width: 640px) {
+          @apply px-1;
+        }
       }
-    }
-
-    @media (max-width: 768px) {
-      @apply mt-10;
-    }
-
-    @media (max-width: 640px) {
-      @apply mt-6;
     }
 
     & .charts {
