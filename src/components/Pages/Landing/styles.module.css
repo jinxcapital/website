@@ -105,6 +105,10 @@
         @apply transform-gpu;
         @apply inline-block;
         @apply py-2 px-2.5;
+
+        & span {
+          font-variant-numeric: tabular-nums;
+        }
       }
     }
   }

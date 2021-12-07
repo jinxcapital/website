@@ -220,15 +220,17 @@ const Landing = () => {
                   className={styles.coin}
                 >
                   <strong>{coin.name}</strong>{' '}
-                  {coin.price >= 1000
-                    ? currencyFormatterBig.format(coin.price)
-                    : coin.price >= 0.1
-                    ? currencyFormatter.format(coin.price)
-                    : coin.price >= 0.01
-                    ? currencyFormatterSmall.format(coin.price)
-                    : currencyFormatterExtraSmall.format(coin.price)}{' '}
-                  {coin.percentageChange24h > 0 ? '▲' : '▼'}{' '}
-                  {percentageFormatter.format(coin.percentageChange24h / 100)}
+                  <span>
+                    {coin.price >= 1000
+                      ? currencyFormatterBig.format(coin.price)
+                      : coin.price >= 0.1
+                      ? currencyFormatter.format(coin.price)
+                      : coin.price >= 0.01
+                      ? currencyFormatterSmall.format(coin.price)
+                      : currencyFormatterExtraSmall.format(coin.price)}{' '}
+                    {coin.percentageChange24h > 0 ? '▲' : '▼'}{' '}
+                    {percentageFormatter.format(coin.percentageChange24h / 100)}
+                  </span>
                 </li>
               ))}
             </ul>
