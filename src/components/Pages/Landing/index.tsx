@@ -2,6 +2,7 @@ import { usePreviousValue } from 'beautiful-react-hooks';
 import Head from 'next/head';
 import Link from 'next/link';
 import { useEffect, useMemo } from 'react';
+import { IoMenu } from 'react-icons/io5';
 import useSWR from 'swr';
 import fetch from 'unfetch';
 
@@ -144,21 +145,73 @@ const Landing = () => {
 
           <ul>
             <li>
-              <a
-                href="https://api.jinx.capital"
-                target="_blank"
-                rel="noreferrer"
-              >
-                API
+              <a>
+                <IoMenu />
+                <span>Menu</span>
               </a>
+              <ul className={styles.subMenu}>
+                <li className={styles.dropdownLink}>
+                  <a
+                    href="https://api.jinx.capital"
+                    target="_blank"
+                    rel="noreferrer"
+                  >
+                    API
+                  </a>
+                </li>
+                <li className={styles.dropdownLink}>
+                  <a
+                    href="https://ftx.com/referrals#a=jinxcapital"
+                    target="_blank"
+                    rel="noreferrer"
+                  >
+                    Trade on FTX
+                  </a>
+                </li>
+                <li className={styles.dropdownLink}>
+                  <a
+                    href="https://app.coinmarketman.com/exchanges/?rf=38514"
+                    target="_blank"
+                    rel="noreferrer"
+                  >
+                    Coin Market Manager
+                  </a>
+                </li>
+                <li className={styles.dropdownLink}>
+                  <a
+                    href="https://twitter.com/0xpowder"
+                    target="_blank"
+                    rel="noreferrer"
+                  >
+                    @0xpowder on Twitter
+                  </a>
+                </li>
+                <li className={styles.dropdownLink}>
+                  <a
+                    href="https://twitter.com/jinxcapital"
+                    target="_blank"
+                    rel="noreferrer"
+                  >
+                    @jinxcapital on Twitter
+                  </a>
+                </li>
+                <li className={styles.dropdownLink}>
+                  <a href="mailto:jinxcapital@protonmail.com">
+                    jinxcapital@protonmail.com
+                  </a>
+                </li>
+              </ul>
             </li>
           </ul>
         </nav>
         {!!coins.length && (
           <div className={styles.scroller}>
-            <ul>
+            <ul className={styles.coins}>
               {[...coins, ...coins].map((coin: Coin, index: number) => (
-                <li key={`scroller-coin-${coin.id}:${index}`}>
+                <li
+                  key={`scroller-coin-${coin.id}:${index}`}
+                  className={styles.coin}
+                >
                   <strong>{coin.name}</strong>{' '}
                   {coin.price > 1.05
                     ? currencyFormatter.format(coin.price)
@@ -179,19 +232,19 @@ const Landing = () => {
           <div className={styles.exchangeNetFlow}>
             <strong>Bitcoin exchange netflow</strong>{' '}
             <ul>
-              <li>
+              <li className={styles.item}>
                 <strong>24H</strong>{' '}
                 <span>
                   {bigNumberFormatter.format(exchangeNetflow.change.day)} BTC
                 </span>
               </li>
-              <li>
+              <li className={styles.item}>
                 <strong>7D</strong>{' '}
                 <span>
                   {bigNumberFormatter.format(exchangeNetflow.change.week)} BTC
                 </span>
               </li>
-              <li>
+              <li className={styles.item}>
                 <strong>30D</strong>{' '}
                 <span>
                   {bigNumberFormatter.format(exchangeNetflow.change.month)} BTC

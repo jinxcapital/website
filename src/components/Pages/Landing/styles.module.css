@@ -27,8 +27,58 @@
         max-width: 120px;
       }
 
-      & a:hover {
-        @apply underline;
+      & ul > li {
+        @apply relative z-50;
+
+        & a {
+          @apply inline-block align-middle whitespace-nowrap;
+          @apply py-1.5 px-4;
+          @apply border border-solid border-black;
+          @apply text-sm font-bold;
+          @apply cursor-pointer;
+
+          & svg {
+            @apply text-xl inline-block;
+            @apply -mt-0.5 mr-2;
+          }
+        }
+
+        & ul {
+          @apply absolute top-8 right-0 z-50;
+          @apply hidden;
+          @apply bg-black;
+          @apply py-2;
+          @apply text-right;
+
+          & li {
+            @apply block;
+          }
+        }
+
+        &:hover {
+          @apply bg-black;
+
+          & ul {
+            @apply inline-block;
+          }
+
+          & a {
+            color: #fef9f3;
+          }
+        }
+
+        & ul .dropdownLink a {
+          @apply font-normal;
+          @apply block;
+
+          border-right-width: 4px;
+
+          &:hover {
+            @apply underline;
+
+            border-right-color: #fef9f3;
+          }
+        }
       }
     }
 
@@ -40,7 +90,7 @@
       @apply text-sm;
       @apply transform-gpu;
 
-      & ul {
+      & .coins {
         @apply inline-block;
         @apply transform-gpu;
 
@@ -51,7 +101,7 @@
         }
       }
 
-      & li {
+      & .coin {
         @apply transform-gpu;
         @apply inline-block;
         @apply py-2 px-2.5;
@@ -75,7 +125,7 @@
         @apply mb-4;
       }
 
-      & li {
+      & .item {
         @apply inline-block;
         @apply mt-2 px-3;
 

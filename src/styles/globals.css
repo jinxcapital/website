@@ -20,8 +20,4 @@ body,
 #__next {
   @apply h-auto;
   @apply flex flex-col;
-
-  & a {
-    @apply inline-block;
-  }
 }
