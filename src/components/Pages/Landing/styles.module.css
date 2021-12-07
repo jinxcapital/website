@@ -87,20 +87,29 @@
 
     & .charts {
       @apply overflow-x-auto whitespace-nowrap;
-      @apply -mx-4;
 
       scroll-snap-type: x mandatory;
 
       & .link {
         @apply inline-block;
-        @apply p-4;
+        @apply relative;
 
         scroll-snap-align: start;
+
+        & + .link {
+          @apply ml-4;
+        }
       }
 
       & img {
         @apply inline-block;
         @apply border border-dotted border-black;
+
+        &.new {
+          @apply border-transparent;
+          @apply absolute inset-0;
+          @apply z-10;
+        }
       }
     }
   }
