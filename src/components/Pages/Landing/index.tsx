@@ -67,7 +67,7 @@ const Landing = () => {
   );
 
   const exchangeNetflow = useMemo(() => {
-    return responseExchangeNetflow.data?.data?.total?.change?.day;
+    return responseExchangeNetflow.data?.data?.total;
   }, [responseExchangeNetflow]);
 
   return (
@@ -103,13 +103,6 @@ const Landing = () => {
         {!!coins.length && (
           <div className={styles.scroller}>
             <ul>
-              {exchangeNetflow && (
-                <li>
-                  <strong>Exchange netflow</strong>{' '}
-                  {exchangeNetflow > 0 ? '▲' : '▼'}{' '}
-                  {bigNumberFormatter.format(exchangeNetflow)} BTC
-                </li>
-              )}
               {[...coins, ...coins].map((coin: Coin, index: number) => (
                 <li key={`scroller-coin-${coin.id}:${index}`}>
                   <strong>{coin.name}</strong>{' '}
@@ -128,6 +121,32 @@ const Landing = () => {
       </header>
 
       <main>
+        {exchangeNetflow && (
+          <div className={styles.exchangeNetFlow}>
+            <strong>Bitcoin exchange netflows</strong>{' '}
+            <ul>
+              <li>
+                <strong>24H</strong>{' '}
+                <span>
+                  {bigNumberFormatter.format(exchangeNetflow.change.day)} BTC
+                </span>
+              </li>
+              <li>
+                <strong>7D</strong>{' '}
+                <span>
+                  {bigNumberFormatter.format(exchangeNetflow.change.week)} BTC
+                </span>
+              </li>
+              <li>
+                <strong>30D</strong>{' '}
+                <span>
+                  {bigNumberFormatter.format(exchangeNetflow.change.month)} BTC
+                </span>
+              </li>
+            </ul>
+          </div>
+        )}
+
         <div className={styles.charts}>
           {coins
             .filter(
