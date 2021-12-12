@@ -3,17 +3,12 @@
   @apply flex;
   @apply justify-between;
 
-  @media (max-width: 540px) {
-    @apply block;
-  }
-
   & ul {
     @apply inline-block;
     @apply -mx-1.5;
 
     @media (max-width: 540px) {
-      @apply block;
-      @apply mb-4;
+      @apply hidden;
     }
   }
 
