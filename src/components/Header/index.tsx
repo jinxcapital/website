@@ -59,16 +59,35 @@ const Header = ({ coins }: Props) => {
                   API
                 </a>
               </li>
+              <li className={styles.dropdownHeading}>Socials</li>
               <li className={styles.dropdownLink}>
                 <a
-                  href="https://github.com/jinxcapital"
+                  href="https://github.com/0xpowder"
                   target="_blank"
                   rel="noreferrer"
                 >
                   GitHub
                 </a>
               </li>
-              <li className={styles.dropdownHeading}>Referral links</li>
+              <li className={styles.dropdownLink}>
+                <a
+                  href="https://twitter.com/0xpowder"
+                  target="_blank"
+                  rel="noreferrer"
+                >
+                  Twitter
+                </a>
+              </li>
+              <li className={styles.dropdownLink}>
+                <a
+                  href="https://tradingview.com/u/powder0x"
+                  target="_blank"
+                  rel="noreferrer"
+                >
+                  TradingView
+                </a>
+              </li>
+              <li className={styles.dropdownHeading}>Referrals</li>
               <li className={styles.dropdownLink}>
                 <a
                   href="https://ftx.com/referrals#a=jinxcapital"
@@ -85,21 +104,6 @@ const Header = ({ coins }: Props) => {
                   rel="noreferrer"
                 >
                   Track with Coin Market Manager
-                </a>
-              </li>
-              <li className={styles.dropdownHeading}>Contact &amp; socials</li>
-              <li className={styles.dropdownLink}>
-                <a
-                  href="https://twitter.com/0xpowder"
-                  target="_blank"
-                  rel="noreferrer"
-                >
-                  @0xpowder on Twitter
-                </a>
-              </li>
-              <li className={styles.dropdownLink}>
-                <a href="mailto:0xpowder@protonmail.com">
-                  0xpowder@protonmail.com
                 </a>
               </li>
             </ul>
