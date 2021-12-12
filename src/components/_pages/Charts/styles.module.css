@@ -1,6 +1,7 @@
 .charts {
   & img {
     @apply border border-black border-dotted;
+    @apply w-full;
   }
 
   & .link {
