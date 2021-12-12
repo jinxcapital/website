@@ -1,4 +1,28 @@
 .container {
   @apply mt-8;
-  @apply text-right;
+  @apply flex;
+  @apply justify-between;
+
+  @media (max-width: 540px) {
+    @apply block;
+  }
+
+  & ul {
+    @apply inline-block;
+    @apply -mx-1.5;
+
+    @media (max-width: 540px) {
+      @apply block;
+      @apply mb-4;
+    }
+  }
+
+  & li {
+    @apply inline-block;
+    @apply px-1.5;
+  }
+
+  & a {
+    @apply block;
+  }
 }
