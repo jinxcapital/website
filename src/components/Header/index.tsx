@@ -1,3 +1,4 @@
+import { useCoins } from 'data/coins/hooks';
 import Link from 'next/link';
 import { MouseEvent, useCallback, useState } from 'react';
 import { IoClose, IoMenu } from 'react-icons/io5';
@@ -12,11 +13,8 @@ import {
 
 import styles from './styles.module.css';
 
-interface Props {
-  coins: Coin[];
-}
-
-const Header = ({ coins }: Props) => {
+const Header = () => {
+  const { coins } = useCoins();
   const [show, setShow] = useState(false);
 
   const onMenuClick = useCallback((e: MouseEvent<HTMLAnchorElement>) => {
