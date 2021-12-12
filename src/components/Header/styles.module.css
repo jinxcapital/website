@@ -102,6 +102,10 @@
         }
       }
 
+      & ul .closeButton + .dropdownHeading {
+        @apply mt-2;
+      }
+
       & ul .dropdownLink {
         @apply border-black border-t-0 border-b-0;
 

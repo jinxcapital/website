@@ -48,14 +48,26 @@ const Header = () => {
                   <IoClose />
                 </button>
               </li>
+              <li className={styles.dropdownHeading}>Menu</li>
               <li className={styles.dropdownLink}>
-                <a
-                  href={process.env.NEXT_PUBLIC_API_URL}
-                  target="_blank"
-                  rel="noreferrer"
-                >
-                  API
-                </a>
+                <Link href="/">
+                  <a>Home</a>
+                </Link>
+              </li>
+              <li className={styles.dropdownLink}>
+                <Link href="/charts">
+                  <a>Charts</a>
+                </Link>
+              </li>
+              <li className={styles.dropdownLink}>
+                <Link href="/contact">
+                  <a>Contact</a>
+                </Link>
+              </li>
+              <li className={styles.dropdownLink}>
+                <Link href="/api">
+                  <a>API</a>
+                </Link>
               </li>
               <li className={styles.dropdownHeading}>Socials</li>
               <li className={styles.dropdownLink}>
