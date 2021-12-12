@@ -65,9 +65,18 @@ const Header = () => {
                 </Link>
               </li>
               <li className={styles.dropdownLink}>
-                <Link href="/api">
-                  <a>API</a>
+                <Link href="/api-docs">
+                  <a>API Docs</a>
                 </Link>
+              </li>
+              <li className={styles.dropdownLink}>
+                <a
+                  href="https://api.jinx.capital"
+                  target="_blank"
+                  rel="noreferrer"
+                >
+                  API
+                </a>
               </li>
               <li className={styles.dropdownHeading}>Socials</li>
               <li className={styles.dropdownLink}>
