@@ -17,6 +17,10 @@
     & ul > li {
       @apply relative z-50;
 
+      @media (max-width: 540px) {
+        @apply static;
+      }
+
       & a {
         @apply inline-block align-middle whitespace-nowrap;
         @apply py-1.5 px-4;
@@ -36,20 +40,53 @@
         @apply bg-black;
         @apply py-2.5;
 
+        @media (max-width: 540px) {
+          @apply inset-0;
+          @apply py-8;
+        }
+
         & li {
           @apply block;
         }
       }
 
       &:hover {
-        @apply bg-black;
+        @media (min-width: 540px) {
+          @apply bg-black;
+
+          & > a {
+            color: #fef9f3;
+          }
+        }
 
         & ul {
           @apply inline-block;
+
+          & a {
+            color: #fef9f3;
+          }
+
+          @media (max-width: 540px) {
+            @apply hidden;
+
+            &.showSubMenu {
+              @apply inline-block;
+            }
+          }
+        }
+      }
+
+      & ul .closeButton {
+        @apply text-right;
+        @apply text-3xl;
+
+        & button {
+          color: #fef9f3;
+          @apply p-4 -mt-4;
         }
 
-        & a {
-          color: #fef9f3;
+        @media (min-width: 540px) {
+          @apply hidden;
         }
       }
 
@@ -57,6 +94,10 @@
         @apply border-black border-t-0 border-b-0;
 
         border-left-width: 4px;
+
+        @media (max-width: 540px) {
+          @apply my-1;
+        }
 
         &:hover {
           border-left-color: #fef9f3;
@@ -67,6 +108,10 @@
           @apply font-normal;
           @apply block;
           @apply px-2 ml-3 mr-4;
+
+          @media (max-width: 540px) {
+            @apply py-2.5 px-3;
+          }
 
           &:hover {
             @apply underline;

@@ -1,5 +1,6 @@
 import Link from 'next/link';
-import { IoMenu } from 'react-icons/io5';
+import { MouseEvent, useCallback, useState } from 'react';
+import { IoClose, IoMenu } from 'react-icons/io5';
 import { Coin } from 'types/coin';
 import {
   formatCurrency,
@@ -16,6 +17,14 @@ interface Props {
 }
 
 const Header = ({ coins }: Props) => {
+  const [show, setShow] = useState(false);
+
+  const onMenuClick = useCallback((e: MouseEvent<HTMLAnchorElement>) => {
+    e.preventDefault();
+
+    setShow(true);
+  }, []);
+
   return (
     <header className={styles.container}>
       <nav>
@@ -30,12 +39,17 @@ const Header = ({ coins }: Props) => {
         </Link>
 
         <ul>
-          <li>
-            <a>
+          <li className={show ? styles.isActive : undefined}>
+            <a onClick={onMenuClick}>
               <IoMenu />
               <span>Menu</span>
             </a>
-            <ul className={styles.subMenu}>
+            <ul className={show ? styles.showSubMenu : undefined}>
+              <li className={styles.closeButton}>
+                <button onClick={() => setShow(false)}>
+                  <IoClose />
+                </button>
+              </li>
               <li className={styles.dropdownLink}>
                 <a
                   href={process.env.NEXT_PUBLIC_API_URL}
