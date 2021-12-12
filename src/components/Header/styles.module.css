@@ -34,8 +34,7 @@
         @apply absolute top-8 right-0 z-50;
         @apply hidden;
         @apply bg-black;
-        @apply py-2;
-        @apply text-right;
+        @apply py-2.5;
 
         & li {
           @apply block;
@@ -54,16 +53,27 @@
         }
       }
 
-      & ul .dropdownLink a {
-        @apply font-normal;
-        @apply block;
+      & ul .dropdownLink {
+        @apply border-black border-t-0 border-b-0;
 
-        border-right-width: 4px;
+        border-left-width: 4px;
 
         &:hover {
-          @apply underline;
+          border-left-color: #fef9f3;
+        }
 
-          border-right-color: #fef9f3;
+        & a {
+          @apply border-0;
+          @apply font-normal;
+          @apply block;
+          @apply px-2 ml-3 mr-4;
+
+          &:hover {
+            @apply underline;
+            @apply text-black;
+
+            background-color: #fef9f3;
+          }
         }
       }
     }
