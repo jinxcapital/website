@@ -38,7 +38,7 @@ const Header = ({ coins }: Props) => {
             <ul className={styles.subMenu}>
               <li className={styles.dropdownLink}>
                 <a
-                  href="https://api.jinx.capital"
+                  href={process.env.NEXT_PUBLIC_API_URL}
                   target="_blank"
                   rel="noreferrer"
                 >
