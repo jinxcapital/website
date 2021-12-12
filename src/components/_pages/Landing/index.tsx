@@ -74,10 +74,6 @@ const Landing = () => {
                 (previousCoin) => previousCoin.id === coin.id,
               );
 
-              if (coin.id === 'bitcoin') {
-                console.log(coin?.price, previousCoin?.price);
-              }
-
               return (
                 <a
                   className={styles.link}
