@@ -5,46 +5,18 @@ import { useEffect, useMemo } from 'react';
 import { IoMenu } from 'react-icons/io5';
 import useSWR from 'swr';
 import fetch from 'unfetch';
+import {
+  formatBigNumber,
+  formatCurrency,
+  formatCurrencyExtraSmall,
+  formatCurrencySmall,
+  formatCurrenyBig,
+  formatPercentage,
+} from 'utils/formatters';
 
 import styles from './styles.module.css';
 
 const fetcher = (url: string) => fetch(url).then((r) => r.json());
-
-const currencyFormatterBig = new Intl.NumberFormat('en-US', {
-  style: 'currency',
-  currency: 'USD',
-  minimumFractionDigits: 0,
-  maximumFractionDigits: 0,
-});
-const currencyFormatter = new Intl.NumberFormat('en-US', {
-  style: 'currency',
-  currency: 'USD',
-  minimumFractionDigits: 2,
-  maximumFractionDigits: 2,
-});
-const currencyFormatterSmall = new Intl.NumberFormat('en-US', {
-  style: 'currency',
-  currency: 'USD',
-  minimumFractionDigits: 2,
-  maximumFractionDigits: 4,
-});
-const currencyFormatterExtraSmall = new Intl.NumberFormat('en-US', {
-  style: 'currency',
-  currency: 'USD',
-  minimumFractionDigits: 2,
-  maximumFractionDigits: 6,
-});
-const percentageFormatter = new Intl.NumberFormat('en-US', {
-  style: 'percent',
-  minimumFractionDigits: 2,
-  maximumFractionDigits: 2,
-  signDisplay: 'always',
-});
-const bigNumberFormatter = Intl.NumberFormat('en-US', {
-  notation: 'compact',
-  maximumFractionDigits: 1,
-  signDisplay: 'always',
-});
 
 type Coin = {
   id: string;
@@ -94,9 +66,7 @@ const Landing = () => {
 
   const title = useMemo(() => {
     if (bitcoin) {
-      return `Jinx Capital - Bitcoin: ${currencyFormatter.format(
-        bitcoin.price,
-      )}`;
+      return `Jinx Capital - Bitcoin: ${formatCurrency(bitcoin.price)}`;
     }
 
     return 'Jinx Capital';
@@ -104,9 +74,9 @@ const Landing = () => {
 
   const description = useMemo(() => {
     if (bitcoin) {
-      return `Jinx Capital is a fictive cryptonative investment fund of @0xpowder. Btw the price of Bitcoin changed with ${percentageFormatter.format(
+      return `Jinx Capital is a fictive cryptonative investment fund of @0xpowder. Btw the price of Bitcoin changed with ${formatPercentage(
         bitcoin.percentageChange24h / 100,
-      )} in the last 24h and is currently sitting at ${currencyFormatter.format(
+      )} in the last 24h and is currently sitting at ${formatCurrency(
         bitcoin.price,
       )}!`;
     }
@@ -213,14 +183,14 @@ const Landing = () => {
                   <strong>{coin.name}</strong>{' '}
                   <span>
                     {coin.price >= 1000
-                      ? currencyFormatterBig.format(coin.price)
+                      ? formatCurrenyBig(coin.price)
                       : coin.price >= 0.1
-                      ? currencyFormatter.format(coin.price)
+                      ? formatCurrency(coin.price)
                       : coin.price >= 0.01
-                      ? currencyFormatterSmall.format(coin.price)
-                      : currencyFormatterExtraSmall.format(coin.price)}{' '}
+                      ? formatCurrencySmall(coin.price)
+                      : formatCurrencyExtraSmall(coin.price)}{' '}
                     {coin.percentageChange24h > 0 ? '▲' : '▼'}{' '}
-                    {percentageFormatter.format(coin.percentageChange24h / 100)}
+                    {formatPercentage(coin.percentageChange24h / 100)}
                   </span>
                 </li>
               ))}
@@ -236,21 +206,15 @@ const Landing = () => {
             <ul>
               <li className={styles.item}>
                 <strong>24H</strong>{' '}
-                <span>
-                  {bigNumberFormatter.format(exchangeNetflow.change.day)} BTC
-                </span>
+                <span>{formatBigNumber(exchangeNetflow.change.day)} BTC</span>
               </li>
               <li className={styles.item}>
                 <strong>7D</strong>{' '}
-                <span>
-                  {bigNumberFormatter.format(exchangeNetflow.change.week)} BTC
-                </span>
+                <span>{formatBigNumber(exchangeNetflow.change.week)} BTC</span>
               </li>
               <li className={styles.item}>
                 <strong>30D</strong>{' '}
-                <span>
-                  {bigNumberFormatter.format(exchangeNetflow.change.month)} BTC
-                </span>
+                <span>{formatBigNumber(exchangeNetflow.change.month)} BTC</span>
               </li>
             </ul>
           </div>
