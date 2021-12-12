@@ -38,7 +38,7 @@
         @apply absolute top-8 right-0 z-50;
         @apply hidden;
         @apply bg-black;
-        @apply py-2.5;
+        @apply py-3;
 
         @media (max-width: 540px) {
           @apply inset-0;
@@ -79,14 +79,26 @@
       & ul .closeButton {
         @apply text-right;
         @apply text-3xl;
+        @apply -mt-6;
 
         & button {
           color: #fef9f3;
-          @apply p-4 -mt-4;
+          @apply p-4;
         }
 
         @media (min-width: 540px) {
           @apply hidden;
+        }
+      }
+
+      & ul .dropdownHeading {
+        @apply font-semibold text-xs uppercase;
+        @apply mt-5 mb-2 ml-6;
+
+        color: #fef9f3;
+
+        @media (max-width: 540px) {
+          @apply ml-7;
         }
       }
 
@@ -110,7 +122,7 @@
           @apply px-2 ml-3 mr-4;
 
           @media (max-width: 540px) {
-            @apply py-2.5 px-3;
+            @apply py-2 px-3;
           }
 
           &:hover {

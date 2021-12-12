@@ -61,11 +61,21 @@ const Header = ({ coins }: Props) => {
               </li>
               <li className={styles.dropdownLink}>
                 <a
+                  href="https://github.com/jinxcapital"
+                  target="_blank"
+                  rel="noreferrer"
+                >
+                  GitHub
+                </a>
+              </li>
+              <li className={styles.dropdownHeading}>Referral links</li>
+              <li className={styles.dropdownLink}>
+                <a
                   href="https://ftx.com/referrals#a=jinxcapital"
                   target="_blank"
                   rel="noreferrer"
                 >
-                  Trade on FTX
+                  Trade with FTX
                 </a>
               </li>
               <li className={styles.dropdownLink}>
@@ -74,9 +84,10 @@ const Header = ({ coins }: Props) => {
                   target="_blank"
                   rel="noreferrer"
                 >
-                  Coin Market Manager
+                  Track with Coin Market Manager
                 </a>
               </li>
+              <li className={styles.dropdownHeading}>Contact &amp; socials</li>
               <li className={styles.dropdownLink}>
                 <a
                   href="https://twitter.com/0xpowder"
