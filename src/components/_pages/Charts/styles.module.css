@@ -1,0 +1,17 @@
+.charts {
+  & img {
+    @apply border border-black border-dotted;
+  }
+
+  & .link {
+    @apply mb-2;
+
+    @media (max-width: 540px) {
+      @apply text-sm;
+    }
+
+    & p {
+      @apply inline-block;
+    }
+  }
+}
