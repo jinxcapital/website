@@ -16,16 +16,18 @@ export const CoinsContext = createContext<Context>({
 
 interface CoinsContextProviderProps {
   children: ReactNode;
+  refreshInterval: number;
 }
 
-export const CoinsContextProvider = (props: CoinsContextProviderProps) => {
-  const { children } = props;
-
+export const CoinsContextProvider = ({
+  children,
+  refreshInterval,
+}: CoinsContextProviderProps) => {
   const { data } = useSWR(
     `${process.env.NEXT_PUBLIC_API_URL}/coins-top`,
     fetcher,
     {
-      refreshInterval: 15000,
+      refreshInterval,
     },
   );
 
