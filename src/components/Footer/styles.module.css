@@ -1,0 +1,4 @@
+.container {
+  @apply mt-8;
+  @apply text-right;
+}
