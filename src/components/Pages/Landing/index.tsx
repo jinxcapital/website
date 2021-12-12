@@ -1,10 +1,9 @@
 import { usePreviousValue } from 'beautiful-react-hooks';
 import Header from 'components/Header';
+import { useCoins } from 'data/coins/hooks';
+import { useExchangeNetflow } from 'data/exchange-netflow/hooks';
 import Head from 'next/head';
-import { useEffect, useMemo } from 'react';
-import useSWR from 'swr';
-import { Coin } from 'types/coin';
-import fetch from 'unfetch';
+import { useMemo } from 'react';
 import {
   formatBigNumber,
   formatCurrency,
@@ -13,45 +12,10 @@ import {
 
 import styles from './styles.module.css';
 
-const fetcher = (url: string) => fetch(url).then((r) => r.json());
-
 const Landing = () => {
-  const { data } = useSWR('https://api.jinx.capital/coins-top', fetcher, {
-    refreshInterval: 15000,
-  });
-
-  const coins = useMemo(() => {
-    if (!data) {
-      return [];
-    }
-
-    return data?.data?.slice(0, 15);
-  }, [data]);
+  const { exchangeNetflow } = useExchangeNetflow();
+  const { bitcoin, coins } = useCoins();
   const previousCoins = usePreviousValue(coins);
-
-  useEffect(() => {
-    console.log({ coins });
-  }, [coins]);
-  useEffect(() => {
-    console.log({ previousCoins });
-  }, [previousCoins]);
-
-  const responseExchangeNetflow = useSWR(
-    'https://api.jinx.capital/exchange-flows/bitcoin',
-    fetcher,
-    {
-      refreshInterval: 30000,
-    },
-  );
-
-  const exchangeNetflow = useMemo(() => {
-    return responseExchangeNetflow.data?.data?.total;
-  }, [responseExchangeNetflow]);
-
-  const bitcoin = useMemo(
-    () => coins.find((coin: Coin) => coin.id === 'bitcoin'),
-    [coins],
-  );
 
   const title = useMemo(() => {
     if (bitcoin) {
@@ -123,13 +87,13 @@ const Landing = () => {
         <div className={styles.charts}>
           {coins
             .filter(
-              (coin: Coin) =>
+              (coin) =>
                 !['usdt', 'usdc', 'dai', 'ust', 'busd'].includes(coin.symbol),
             )
             .slice(0, 10)
-            .map((coin: Coin) => {
+            .map((coin) => {
               const previousCoin = (previousCoins || []).find(
-                (previousCoin: Coin) => previousCoin.id === coin.id,
+                (previousCoin) => previousCoin.id === coin.id,
               );
 
               if (coin.id === 'bitcoin') {
