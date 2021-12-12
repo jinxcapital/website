@@ -1,4 +1,5 @@
 import { usePreviousValue } from 'beautiful-react-hooks';
+import Footer from 'components/Footer';
 import Header from 'components/Header';
 import { useCoins } from 'data/coins/hooks';
 import { useExchangeNetflow } from 'data/exchange-netflow/hooks';
@@ -133,7 +134,7 @@ const Landing = () => {
         </div>
       </main>
 
-      <footer>&copy; {new Date().getFullYear()} Jinx Capital</footer>
+      <Footer />
     </div>
   );
 };
