@@ -18,31 +18,5 @@
     @media (max-width: 640px) {
       @apply mt-4;
     }
-
-    & .charts {
-      @apply overflow-x-auto whitespace-nowrap;
-      @apply -mx-2;
-
-      scroll-snap-type: x mandatory;
-
-      & .link {
-        @apply inline-block;
-        @apply relative;
-        @apply mx-2;
-
-        scroll-snap-align: center;
-      }
-
-      & img {
-        @apply inline-block;
-        @apply border border-dotted border-black;
-
-        &.new {
-          @apply border-transparent;
-          @apply absolute inset-0;
-          @apply z-10;
-        }
-      }
-    }
   }
 }
