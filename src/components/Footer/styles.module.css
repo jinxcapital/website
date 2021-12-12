@@ -19,5 +19,9 @@
 
   & a {
     @apply block;
+
+    &:hover {
+      @apply underline;
+    }
   }
 }
