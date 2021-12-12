@@ -5,9 +5,13 @@ import { Coin } from 'types/coin';
 const fetcher = (url: string) => fetch(url).then((r) => r.json());
 
 export const useCoins = () => {
-  const { data } = useSWR('https://api.jinx.capital/coins-top', fetcher, {
-    refreshInterval: 15000,
-  });
+  const { data } = useSWR(
+    `${process.env.NEXT_PUBLIC_API_URL}/coins-top`,
+    fetcher,
+    {
+      refreshInterval: 15000,
+    },
+  );
 
   const coins: Coin[] = useMemo(() => {
     if (!data) {

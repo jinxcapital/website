@@ -46,13 +46,13 @@ const Landing = () => {
         <meta name="twitter:creator" content="@0xpowder" />
         <meta
           name="twitter:image"
-          content="https://api.jinx.capital/chart/btc:usd.jpg"
+          content={`${process.env.NEXT_PUBLIC_API_URL}/chart/btc:usd.jpg`}
         />
         <meta property="og:title" content={title} />
         <meta property="og:description" content={description} />
         <meta
           property="og:image"
-          content="https://api.jinx.capital/chart/btc:usd.jpg"
+          content={`${process.env.NEXT_PUBLIC_API_URL}/chart/btc:usd.jpg`}
         />
         <meta property="og:url" content="https://jinx.capital" />
       </Head>
@@ -77,13 +77,13 @@ const Landing = () => {
               return (
                 <a
                   className={styles.link}
-                  href={`https://api.jinx.capital/chart/${coin.symbol}:usdt.jpg`}
+                  href={`${process.env.NEXT_PUBLIC_API_URL}/chart/${coin.symbol}:usdt.jpg`}
                   key={`chart-${coin.id}`}
                   target="_blank"
                   rel="noreferrer"
                 >
                   <img
-                    src={`https://api.jinx.capital/chart/${
+                    src={`${process.env.NEXT_PUBLIC_API_URL}/chart/${
                       (previousCoin || coin).symbol
                     }:usdt.jpg?${(previousCoin || coin).price}`}
                     alt={`${(previousCoin || coin).symbol}:usdt.jpg`}
@@ -93,7 +93,7 @@ const Landing = () => {
                   />
                   {previousCoin && (
                     <img
-                      src={`https://api.jinx.capital/chart/${coin.symbol}:usdt.jpg?${coin.price}`}
+                      src={`${process.env.NEXT_PUBLIC_API_URL}/chart/${coin.symbol}:usdt.jpg?${coin.price}`}
                       alt={`${coin.symbol}:usdt.jpg`}
                       loading="lazy"
                       width="640"
