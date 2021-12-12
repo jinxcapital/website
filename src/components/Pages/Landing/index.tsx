@@ -194,17 +194,8 @@ const Landing = () => {
                   </a>
                 </li>
                 <li className={styles.dropdownLink}>
-                  <a
-                    href="https://twitter.com/jinxcapital"
-                    target="_blank"
-                    rel="noreferrer"
-                  >
-                    @jinxcapital on Twitter
-                  </a>
-                </li>
-                <li className={styles.dropdownLink}>
-                  <a href="mailto:jinxcapital@protonmail.com">
-                    jinxcapital@protonmail.com
+                  <a href="mailto:0xpowder@protonmail.com">
+                    0xpowder@protonmail.com
                   </a>
                 </li>
               </ul>
