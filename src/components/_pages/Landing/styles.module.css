@@ -19,24 +19,6 @@
       @apply mt-4;
     }
 
-    & .exchangeNetFlow {
-      @apply mt-2 mb-8;
-      @apply text-sm text-center;
-
-      @media (max-width: 640px) {
-        @apply mb-4;
-      }
-
-      & .item {
-        @apply inline-block;
-        @apply mt-2 px-3;
-
-        @media (max-width: 640px) {
-          @apply px-1;
-        }
-      }
-    }
-
     & .charts {
       @apply overflow-x-auto whitespace-nowrap;
       @apply -mx-2;

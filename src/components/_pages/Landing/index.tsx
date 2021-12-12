@@ -1,20 +1,15 @@
 import { usePreviousValue } from 'beautiful-react-hooks';
+import BitcoinExchangeNetflow from 'components/BitcoinExchangeNetflow';
 import Footer from 'components/Footer';
 import Header from 'components/Header';
 import { useCoins } from 'data/coins/hooks';
-import { useExchangeNetflow } from 'data/exchange-netflow/hooks';
 import Head from 'next/head';
 import { useMemo } from 'react';
-import {
-  formatBigNumber,
-  formatCurrency,
-  formatPercentage,
-} from 'utils/formatters';
+import { formatCurrency, formatPercentage } from 'utils/formatters';
 
 import styles from './styles.module.css';
 
 const Landing = () => {
-  const { exchangeNetflow } = useExchangeNetflow();
   const { bitcoin, coins } = useCoins();
   const previousCoins = usePreviousValue(coins);
 
@@ -65,25 +60,7 @@ const Landing = () => {
       <Header coins={coins} />
 
       <main>
-        {exchangeNetflow && (
-          <div className={styles.exchangeNetFlow}>
-            <strong>Bitcoin exchange netflow</strong>{' '}
-            <ul>
-              <li className={styles.item}>
-                <strong>24H</strong>{' '}
-                <span>{formatBigNumber(exchangeNetflow.change.day)} BTC</span>
-              </li>
-              <li className={styles.item}>
-                <strong>7D</strong>{' '}
-                <span>{formatBigNumber(exchangeNetflow.change.week)} BTC</span>
-              </li>
-              <li className={styles.item}>
-                <strong>30D</strong>{' '}
-                <span>{formatBigNumber(exchangeNetflow.change.month)} BTC</span>
-              </li>
-            </ul>
-          </div>
-        )}
+        <BitcoinExchangeNetflow />
 
         <div className={styles.charts}>
           {coins
