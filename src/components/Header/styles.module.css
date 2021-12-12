@@ -104,6 +104,10 @@
 
       & ul .closeButton + .dropdownHeading {
         @apply mt-2;
+
+        @media (max-width: 540px) {
+          @apply -mt-6;
+        }
       }
 
       & ul .dropdownLink {
