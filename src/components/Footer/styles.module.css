@@ -1,27 +1,3 @@
 .container {
   @apply mt-8;
-  @apply flex;
-  @apply justify-between;
-
-  & ul {
-    @apply inline-block;
-    @apply -mx-1.5;
-
-    @media (max-width: 540px) {
-      @apply hidden;
-    }
-  }
-
-  & li {
-    @apply inline-block;
-    @apply px-1.5;
-  }
-
-  & a {
-    @apply block;
-
-    &:hover {
-      @apply underline;
-    }
-  }
 }
