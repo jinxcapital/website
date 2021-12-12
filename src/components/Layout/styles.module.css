@@ -18,5 +18,15 @@
     @media (max-width: 640px) {
       @apply mt-4;
     }
+
+    & h1 {
+      @apply mt-4 mb-2;
+      @apply font-bold;
+      @apply text-xl;
+    }
+
+    & a:hover {
+      @apply underline;
+    }
   }
 }
