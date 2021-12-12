@@ -1,30 +1,9 @@
-import { useMemo } from 'react';
-import useSWR from 'swr';
-import { Coin } from 'types/coin';
+import { useContext, useMemo } from 'react';
 
-const fetcher = (url: string) => fetch(url).then((r) => r.json());
+import { CoinsContext } from './context';
 
 export const useCoins = () => {
-  const { data } = useSWR(
-    `${process.env.NEXT_PUBLIC_API_URL}/coins-top`,
-    fetcher,
-    {
-      refreshInterval: 15000,
-    },
-  );
-
-  const coins: Coin[] = useMemo(() => {
-    if (!data) {
-      return [];
-    }
-
-    return data?.data?.slice(0, 15);
-  }, [data]);
-
-  const bitcoin: Coin | null = useMemo(
-    () => coins.find((coin) => coin.id === 'bitcoin') || null,
-    [coins],
-  );
+  const { coins, bitcoin } = useContext(CoinsContext);
 
   return useMemo(() => ({ coins, bitcoin }), [coins, bitcoin]);
 };

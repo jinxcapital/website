@@ -1,21 +1,18 @@
 import { usePreviousValue } from 'beautiful-react-hooks';
+import { useCoins } from 'data/coins/hooks';
 import { useMemo } from 'react';
-import { Coin } from 'types/coin';
 
 import styles from './styles.module.css';
 
-interface Props {
-  coins: Coin[];
-}
-
-const Charts = (props: Props) => {
+const Charts = () => {
+  const { coins: allCoins } = useCoins();
   const coins = useMemo(() => {
-    return props.coins
+    return allCoins
       .filter(
         (coin) => !['usdt', 'usdc', 'dai', 'ust', 'busd'].includes(coin.symbol),
       )
       .slice(0, 10);
-  }, [props.coins]);
+  }, [allCoins]);
   const previousCoins = usePreviousValue(coins);
 
   return (
