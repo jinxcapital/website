@@ -1,0 +1,54 @@
+.container {
+  & .baseUrl {
+    @apply mt-4;
+  }
+
+  & .docs {
+    @apply mt-4;
+
+    & li {
+      @apply mb-3;
+      @apply border-2 border-black p-1.5;
+      @apply rounded-lg;
+      @apply flex items-center;
+      @apply cursor-pointer;
+
+      & span {
+        @apply inline-block;
+        @apply leading-tight;
+        @apply whitespace-nowrap;
+      }
+
+      & .method {
+        @apply font-semibold font-mono;
+        @apply bg-black;
+        @apply p-1 px-3;
+        @apply rounded;
+        @apply mr-3;
+
+        color: #fef9f3;
+      }
+
+      & .path {
+        @apply font-semibold font-mono;
+        @apply mr-3;
+      }
+
+      & .description {
+        @apply truncate;
+      }
+
+      &:hover {
+        @apply bg-black;
+
+        color: #fef9f3;
+
+        & .method {
+          @apply text-black;
+
+          background-color: #fef9f3;
+        }
+      }
+    }
+  }
+}

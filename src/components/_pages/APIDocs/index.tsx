@@ -1,17 +1,65 @@
 import Layout from 'components/Layout';
 
+import styles from './styles.module.css';
+
+const API_ENDPOINTS = [
+  {
+    method: 'GET',
+    path: '/coins',
+    description: 'Get a list of coins with their id, symbol & name',
+  },
+  {
+    method: 'GET',
+    path: '/coins/:id',
+    description:
+      'Get a detailed info for a coin (rank, price, price change, market cap, ath, pullback, website, ...)',
+  },
+  {
+    method: 'GET',
+    path: '/coins-top',
+    description:
+      'Get detailed info for top 100 coins (rank, price, price change, market cap, ath, pullback, website, ...)',
+  },
+  {
+    method: 'GET',
+    path: '/exchange-flows/:id',
+    description: 'Get exchange flow data for a coin',
+  },
+  {
+    method: 'GET',
+    path: '/candles/:pair',
+    description:
+      'Get candle data for a pair (high, low, open, close, timestamp)',
+  },
+  {
+    method: 'GET',
+    path: '/chart/:pair.jpg',
+    description:
+      'Generate a 1H chart for a pair over the last 72 hours as image/jpeg',
+  },
+];
+
 const APIDocs = () => {
   return (
     <Layout title="API docs - Jinx Capital">
-      <h1>API Docs</h1>
-      <p>
-        coming soon
-        <br />
-        &rarr;{' '}
-        <a href="https://api.jinx.capital" target="_blank" rel="noreferrer">
-          https://api.jinx.capital
-        </a>
-      </p>
+      <div className={styles.container}>
+        <h1>API Docs</h1>
+        <p className={styles.baseUrl}>
+          <strong>Base URL:</strong>{' '}
+          <a href="https://api.jinx.capital" target="_blank" rel="noreferrer">
+            https://api.jinx.capital
+          </a>
+        </p>
+        <ul className={styles.docs}>
+          {API_ENDPOINTS.map((endpoint, index) => (
+            <li key={`api-endpoint:${index}`}>
+              <span className={styles.method}>{endpoint.method}</span>
+              <span className={styles.path}>{endpoint.path}</span>
+              <span className={styles.description}>{endpoint.description}</span>
+            </li>
+          ))}
+        </ul>
+      </div>
     </Layout>
   );
 };
