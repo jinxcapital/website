@@ -69,7 +69,7 @@ const Header = () => {
                   <a>API Docs</a>
                 </Link>
               </li>
-              <li className={styles.dropdownLink}>
+              <li className={`${styles.dropdownLink} ${styles.last}`}>
                 <a
                   href="https://api.jinx.capital"
                   target="_blank"
@@ -97,7 +97,7 @@ const Header = () => {
                   Twitter
                 </a>
               </li>
-              <li className={styles.dropdownLink}>
+              <li className={`${styles.dropdownLink} ${styles.last}`}>
                 <a
                   href="https://tradingview.com/u/powder0x"
                   target="_blank"
@@ -116,7 +116,7 @@ const Header = () => {
                   Trade with FTX
                 </a>
               </li>
-              <li className={styles.dropdownLink}>
+              <li className={`${styles.dropdownLink} ${styles.last}`}>
                 <a
                   href="https://app.coinmarketman.com/exchanges/?rf=38514"
                   target="_blank"
