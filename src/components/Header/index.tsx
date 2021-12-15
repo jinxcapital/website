@@ -54,7 +54,7 @@ const Header = () => {
                   <a>Home</a>
                 </Link>
               </li>
-              <li className={styles.dropdownLink}>
+              <li className={`${styles.dropdownLink} ${styles.last}`}>
                 <Link href="/api-docs">
                   <a>API Docs</a>
                 </Link>
