@@ -8,7 +8,7 @@
 
     & li {
       @apply mb-3;
-      @apply border-2 border-black p-1.5;
+      @apply border-2 border-tint-dark p-1.5;
       @apply rounded-lg;
       @apply flex items-center;
       @apply cursor-pointer;
@@ -21,12 +21,12 @@
 
       & .method {
         @apply font-semibold font-mono;
-        @apply bg-black;
+        @apply bg-tint-dark;
         @apply p-1 px-3;
         @apply rounded;
         @apply mr-3;
 
-        color: #fef9f3;
+        @apply text-tint-light;
       }
 
       & .path {
@@ -39,14 +39,13 @@
       }
 
       &:hover {
-        @apply bg-black;
+        @apply bg-tint-dark;
 
-        color: #fef9f3;
+        @apply text-tint-light;
 
         & .method {
-          @apply text-black;
-
-          background-color: #fef9f3;
+          @apply text-tint-dark;
+          @apply bg-tint-light;
         }
       }
     }

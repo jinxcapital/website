@@ -5,9 +5,9 @@
 
 html {
   @apply antialiased;
+  @apply bg-tint-light;
+  @apply text-tint-dark;
 
-  background-color: #fef9f3;
-  color: #191818;
   scroll-behavior: smooth;
 }
 

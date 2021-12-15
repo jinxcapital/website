@@ -24,7 +24,7 @@
       & a {
         @apply inline-block align-middle whitespace-nowrap;
         @apply py-1.5 px-4;
-        @apply border border-solid border-black;
+        @apply border border-solid border-tint-dark;
         @apply text-sm font-bold;
         @apply cursor-pointer;
 
@@ -37,7 +37,7 @@
       & ul {
         @apply absolute top-8 right-0 z-50;
         @apply hidden;
-        @apply bg-black;
+        @apply bg-tint-dark;
         @apply py-3;
 
         @media (max-width: 540px) {
@@ -52,10 +52,10 @@
 
       &:hover {
         @media (min-width: 540px) {
-          @apply bg-black;
+          @apply bg-tint-dark;
 
           & > a {
-            color: #fef9f3;
+            @apply text-tint-light;
           }
         }
 
@@ -63,7 +63,7 @@
           @apply inline-block;
 
           & a {
-            color: #fef9f3;
+            @apply text-tint-light;
           }
 
           @media (max-width: 540px) {
@@ -82,7 +82,7 @@
         @apply -mt-8;
 
         & button {
-          color: #fef9f3;
+          @apply text-tint-light;
           @apply p-4;
         }
 
@@ -95,12 +95,12 @@
         @apply font-semibold text-xs uppercase;
         @apply mt-5 mb-2 ml-6;
 
-        color: #fef9f3;
+        @apply text-tint-light;
 
         @media (max-width: 540px) {
           @apply m-0 p-2 pl-7;
           @apply leading-none;
-          @apply bg-white bg-opacity-10;
+          @apply bg-white bg-opacity-5;
         }
       }
 
@@ -113,7 +113,7 @@
       }
 
       & ul .dropdownLink {
-        @apply border-black border-t-0 border-b-0;
+        @apply border-tint-dark border-t-0 border-b-0 border-r-0;
 
         border-left-width: 4px;
 
@@ -123,7 +123,7 @@
 
         @media (min-width: 540px) {
           &:hover {
-            border-left-color: #fef9f3;
+            @apply border-tint-light;
           }
         }
 
@@ -141,17 +141,17 @@
 
           &:hover {
             @apply underline;
-            @media (min-width: 540px) {
-              @apply text-black;
 
-              background-color: #fef9f3;
+            @media (min-width: 540px) {
+              @apply text-tint-dark;
+              @apply bg-tint-light;
             }
           }
         }
 
         &.last a {
           @media (max-width: 540px) {
-            border-bottom: 0;
+            @apply border-b-0;
           }
         }
       }
@@ -161,7 +161,7 @@
   & .scroller {
     @apply relative;
     @apply mt-8;
-    @apply border border-black border-l-0 border-r-0;
+    @apply border border-tint-dark border-l-0 border-r-0;
     @apply overflow-hidden whitespace-nowrap;
     @apply text-sm;
     @apply transform-gpu;
