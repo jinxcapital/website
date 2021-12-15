@@ -29,9 +29,14 @@ const Header = () => {
         <Link href="/">
           <a>
             <img
-              src="/jinx-capital.svg"
+              src="/jinx-capital--light.svg"
               alt="JINX CAPITAL"
-              className={styles.logo}
+              className={`${styles.logo} ${styles.light}`}
+            />
+            <img
+              src="/jinx-capital--dark.svg"
+              alt="JINX CAPITAL"
+              className={`${styles.logo} ${styles.dark}`}
             />
           </a>
         </Link>

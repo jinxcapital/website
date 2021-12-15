@@ -11,6 +11,22 @@
     & .logo {
       @apply w-full;
 
+      &.light {
+        @apply block;
+
+        @media (prefers-color-scheme: dark) {
+          @apply hidden;
+        }
+      }
+
+      &.dark {
+        @apply hidden;
+
+        @media (prefers-color-scheme: dark) {
+          @apply block;
+        }
+      }
+
       max-width: 120px;
     }
 
@@ -24,7 +40,7 @@
       & a {
         @apply inline-block align-middle whitespace-nowrap;
         @apply py-1.5 px-4;
-        @apply border border-solid border-tint-dark;
+        @apply border border-solid border-tint-dark dark:border-tint-light;
         @apply text-sm font-bold;
         @apply cursor-pointer;
 
@@ -37,7 +53,7 @@
       & ul {
         @apply absolute top-8 right-0 z-50;
         @apply hidden;
-        @apply bg-tint-dark;
+        @apply bg-tint-dark dark:bg-tint-light;
         @apply py-3;
 
         @media (max-width: 540px) {
@@ -52,10 +68,10 @@
 
       &:hover {
         @media (min-width: 540px) {
-          @apply bg-tint-dark;
+          @apply bg-tint-dark dark:bg-tint-light;
 
           & > a {
-            @apply text-tint-light;
+            @apply text-tint-light dark:text-tint-dark;
           }
         }
 
@@ -63,7 +79,7 @@
           @apply inline-block;
 
           & a {
-            @apply text-tint-light;
+            @apply text-tint-light dark:text-tint-dark;
           }
 
           @media (max-width: 540px) {
@@ -82,7 +98,7 @@
         @apply -mt-8;
 
         & button {
-          @apply text-tint-light;
+          @apply text-tint-light dark:text-tint-dark;
           @apply p-4;
         }
 
@@ -94,13 +110,19 @@
       & ul .dropdownHeading {
         @apply font-semibold text-xs uppercase;
         @apply mt-5 mb-2 ml-6;
-
-        @apply text-tint-light;
+        @apply text-tint-light dark:text-tint-dark;
 
         @media (max-width: 540px) {
           @apply m-0 p-2 pl-7;
           @apply leading-none;
-          @apply bg-white bg-opacity-5;
+
+          @media (prefers-color-scheme: light) {
+            @apply bg-tint-light bg-opacity-5;
+          }
+
+          @media (prefers-color-scheme: dark) {
+            @apply bg-tint-dark bg-opacity-5;
+          }
         }
       }
 
@@ -113,7 +135,7 @@
       }
 
       & ul .dropdownLink {
-        @apply border-tint-dark border-t-0 border-b-0 border-r-0;
+        @apply border-tint-dark dark:border-tint-light border-t-0 border-b-0 border-r-0;
 
         border-left-width: 4px;
 
@@ -123,7 +145,7 @@
 
         @media (min-width: 540px) {
           &:hover {
-            @apply border-tint-light;
+            @apply border-tint-light dark:border-tint-dark;
           }
         }
 
@@ -135,16 +157,15 @@
 
           @media (max-width: 540px) {
             @apply py-2 px-3;
-
-            border-bottom: 1px dotted rgb(255 255 255 / 15%);
+            @apply border-b border-dotted border-tint-light border-opacity-10;
           }
 
           &:hover {
             @apply underline;
 
             @media (min-width: 540px) {
-              @apply text-tint-dark;
-              @apply bg-tint-light;
+              @apply text-tint-dark dark:text-tint-light;
+              @apply bg-tint-light dark:bg-tint-dark;
             }
           }
         }
@@ -161,7 +182,7 @@
   & .scroller {
     @apply relative;
     @apply mt-8;
-    @apply border border-tint-dark border-l-0 border-r-0;
+    @apply border border-tint-dark dark:border-tint-light border-l-0 border-r-0;
     @apply overflow-hidden whitespace-nowrap;
     @apply text-sm;
     @apply transform-gpu;

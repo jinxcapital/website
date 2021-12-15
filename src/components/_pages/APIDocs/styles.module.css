@@ -8,7 +8,7 @@
 
     & li {
       @apply mb-3;
-      @apply border-2 border-tint-dark p-1.5;
+      @apply border-2 border-tint-dark dark:border-tint-light p-1.5;
       @apply rounded-lg;
       @apply flex items-center;
       @apply cursor-pointer;
@@ -21,12 +21,11 @@
 
       & .method {
         @apply font-semibold font-mono;
-        @apply bg-tint-dark;
+        @apply bg-tint-dark dark:bg-tint-light;
         @apply p-1 px-3;
         @apply rounded;
         @apply mr-3;
-
-        @apply text-tint-light;
+        @apply text-tint-light dark:text-tint-dark;
       }
 
       & .path {
@@ -39,13 +38,12 @@
       }
 
       &:hover {
-        @apply bg-tint-dark;
-
-        @apply text-tint-light;
+        @apply bg-tint-dark dark:bg-tint-light;
+        @apply text-tint-light dark:text-tint-dark;
 
         & .method {
-          @apply text-tint-dark;
-          @apply bg-tint-light;
+          @apply text-tint-dark dark:text-tint-light;
+          @apply bg-tint-light dark:bg-tint-dark;
         }
       }
     }
