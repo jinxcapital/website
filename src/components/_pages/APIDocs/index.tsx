@@ -16,6 +16,11 @@ const API_ENDPOINTS = [
   },
   {
     method: 'GET',
+    path: '/coins/:id/image.png',
+    description: 'Coin image as image/png',
+  },
+  {
+    method: 'GET',
     path: '/coins-top',
     description:
       'Get detailed info for top 100 coins (rank, price, price change, market cap, ath, pullback, website, ...)',
