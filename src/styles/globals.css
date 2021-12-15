@@ -5,8 +5,8 @@
 
 html {
   @apply antialiased;
-  @apply bg-tint-light dark:bg-tint-dark;
-  @apply text-tint-dark dark:text-tint-light;
+  @apply bg-tint-light;
+  @apply text-tint-dark;
 
   scroll-behavior: smooth;
 }

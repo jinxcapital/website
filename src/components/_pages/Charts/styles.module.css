@@ -1,6 +1,6 @@
 .charts {
   & img {
-    @apply border border-tint-dark dark:border-tint-light border-dotted;
+    @apply border border-tint-dark border-dotted;
     @apply w-full;
   }
 
