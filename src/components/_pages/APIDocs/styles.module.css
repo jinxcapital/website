@@ -16,13 +16,12 @@
 
       & .summary {
         @apply flex items-center;
-        @apply pointer-events-none;
       }
 
       & .content {
         @apply hidden;
         @apply -mx-1.5 px-2 mt-1.5 pt-1.5;
-        @apply border-t border-tint-light  border-opacity-10;
+        @apply border-t border-tint-light border-opacity-10;
       }
 
       @media (min-width: 540px) {
@@ -57,7 +56,7 @@
         @apply truncate;
       }
 
-      &:focus {
+      &.focus {
         @apply bg-tint-dark;
         @apply text-tint-light;
         @apply ring-0 outline-none;

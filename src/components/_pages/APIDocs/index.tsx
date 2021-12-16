@@ -1,4 +1,6 @@
 import Layout from 'components/Layout';
+import { useOnClickOutside } from 'hooks/onOutsideClick';
+import { useRef, useState } from 'react';
 
 import styles from './styles.module.css';
 
@@ -9,6 +11,14 @@ const API_ENDPOINTS = [
     description: 'Get a list of coins with their id, symbol & name.',
     descriptionExtended:
       'Get a list of coins with their id, symbol & name. This endpoint has no pagination and returns all available coins, it can however be filter using the filter param.',
+    queryParams: {
+      filter: {
+        description: 'A filter to the filter the result set on name or symbol.',
+        type: 'string',
+        examples: ['bitcoin', 'btc', 'ethereum', 'eth'],
+      },
+    },
+    examples: ['/coins', '/coins?filter=bitcoin', '/coins?filter=eth'],
   },
   {
     method: 'GET',
@@ -84,19 +94,32 @@ const API_ENDPOINTS = [
 ];
 
 const APIDocs = () => {
+  const docs = useRef(null);
+  const [selectedEndpoint, setSelectedEndpoint] = useState(-1);
+
+  useOnClickOutside(docs, () => setSelectedEndpoint(-1));
+
   return (
     <Layout title="API docs - JINX CAPITAL">
       <div className={styles.container}>
         <h1>API Docs</h1>
         <p className={styles.baseUrl}>
           <strong>Base URL:</strong>{' '}
-          <a href="https://api.jinx.capital" target="_blank" rel="noreferrer">
-            https://api.jinx.capital
+          <a
+            href={process.env.NEXT_PUBLIC_API_URL}
+            target="_blank"
+            rel="noreferrer"
+          >
+            {process.env.NEXT_PUBLIC_API_URL}
           </a>
         </p>
-        <ul className={styles.docs}>
+        <ul className={styles.docs} ref={docs}>
           {API_ENDPOINTS.map((endpoint, index) => (
-            <li key={`api-endpoint:${index}`} tabIndex={index}>
+            <li
+              key={`api-endpoint:${index}`}
+              onClick={() => setSelectedEndpoint(index)}
+              className={selectedEndpoint === index ? styles.focus : undefined}
+            >
               <div className={styles.summary}>
                 <span className={styles.method}>{endpoint.method}</span>
                 <span className={styles.path}>{endpoint.path}</span>
@@ -122,6 +145,42 @@ const APIDocs = () => {
                         </li>
                       ),
                     )}
+                  </ul>
+                )}
+                {endpoint.queryParams && (
+                  <ul className={styles.params}>
+                    <li>Query parameters</li>
+                    {Object.entries(endpoint.queryParams).map(
+                      ([param, info], paramIndex) => (
+                        <li
+                          key={`api-endpoint:${index}-query-param:${paramIndex}`}
+                        >
+                          <strong className={styles.param}>:{param}</strong>
+                          <br />
+                          <strong>description:</strong> {info.description}
+                          <br />
+                          <strong>type:</strong> {info.type}
+                          <br />
+                          <strong>examples:</strong> {info.examples.join(', ')}
+                        </li>
+                      ),
+                    )}
+                  </ul>
+                )}
+                {endpoint.examples && (
+                  <ul className={styles.params}>
+                    <li>Examples</li>
+                    {endpoint.examples.map((example, exampleIndex) => (
+                      <li key={`api-endpoint:${index}-example:${exampleIndex}`}>
+                        <a
+                          href={`${process.env.NEXT_PUBLIC_API_URL}${example}`}
+                          target="_blank"
+                          rel="noreferrer"
+                        >
+                          {example}
+                        </a>
+                      </li>
+                    ))}
                   </ul>
                 )}
               </div>
