@@ -12,19 +12,26 @@ const API_ENDPOINTS = [
     method: 'GET',
     path: '/coins/:id',
     description:
-      'Get a detailed info for a coin (rank, price, price change, market cap, ath, pullback, website, ...)',
-    params: undefined,
-    // params: {
-    //   id: {
-    //     type: 'string',
-    //     examples: ['bitcoin', 'ethereum', 'litecoin'],
-    //   },
-    // },
+      'Get detailed info for a coin (rank, price, price change, market cap, ath, pullback, website, ...)',
+    params: {
+      id: {
+        description: 'the id of the coin',
+        type: 'string',
+        examples: ['bitcoin', 'ethereum', 'litecoin'],
+      },
+    },
   },
   {
     method: 'GET',
     path: '/coins/:id/image.png',
     description: 'Coin image as image/png',
+    params: {
+      id: {
+        description: 'the id of the coin',
+        type: 'string',
+        examples: ['bitcoin', 'ethereum', 'litecoin'],
+      },
+    },
   },
   {
     method: 'GET',
@@ -36,18 +43,41 @@ const API_ENDPOINTS = [
     method: 'GET',
     path: '/exchange-flows/:id',
     description: 'Get exchange flow data for a coin',
+    params: {
+      id: {
+        description: 'the id of the coin',
+        type: 'string',
+        examples: ['bitcoin', 'ethereum', 'litecoin'],
+      },
+    },
   },
   {
     method: 'GET',
     path: '/candles/:pair',
     description:
       'Get candle data for a pair (high, low, open, close, timestamp)',
+    params: {
+      pair: {
+        description:
+          'a coin pair separated with a colon, works best with fiat or stablecoin as quote currency',
+        type: 'string',
+        examples: ['btc:usd', 'eth:usdc', 'bnb:busd'],
+      },
+    },
   },
   {
     method: 'GET',
     path: '/chart/:pair.jpg',
     description:
       'Generate a 1H chart for a pair over the last 72 hours as image/jpeg',
+    params: {
+      pair: {
+        description:
+          'a coin pair separated with a colon, works best with fiat or stablecoin as quote currency',
+        type: 'string',
+        examples: ['btc:usd', 'eth:usdc', 'bnb:busd'],
+      },
+    },
   },
 ];
 
@@ -76,10 +106,17 @@ const APIDocs = () => {
                 <p>{endpoint.description}</p>
                 {endpoint.params && (
                   <ul className={styles.params}>
+                    <li>Parameters</li>
                     {Object.entries(endpoint.params).map(
-                      ([param], paramIndex) => (
+                      ([param, info], paramIndex) => (
                         <li key={`api-endpoint:${index}-param:${paramIndex}`}>
-                          <strong>{param}</strong>
+                          <strong className={styles.param}>:{param}</strong>
+                          <br />
+                          <strong>description:</strong> {info.description}
+                          <br />
+                          <strong>type:</strong> {info.type}
+                          <br />
+                          <strong>examples:</strong> {info.examples.join(', ')}
                         </li>
                       ),
                     )}
