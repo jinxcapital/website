@@ -13,6 +13,7 @@ const API_ENDPOINTS = [
     path: '/coins/:id',
     description:
       'Get a detailed info for a coin (rank, price, price change, market cap, ath, pullback, website, ...)',
+    params: undefined,
     // params: {
     //   id: {
     //     type: 'string',
