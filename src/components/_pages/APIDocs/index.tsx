@@ -7,6 +7,8 @@ const API_ENDPOINTS = [
     method: 'GET',
     path: '/coins',
     description: 'Get a list of coins with their id, symbol & name.',
+    descriptionExtended:
+      'Get a list of coins with their id, symbol & name. This endpoint has no pagination and returns all available coins, it can however be filter using the filter param.',
   },
   {
     method: 'GET',
@@ -103,7 +105,7 @@ const APIDocs = () => {
                 </span>
               </div>
               <div className={styles.content}>
-                <p>{endpoint.description}</p>
+                <p>{endpoint.descriptionExtended || endpoint.description}</p>
                 {endpoint.params && (
                   <ul className={styles.params}>
                     <li>Parameters</li>
