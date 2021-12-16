@@ -83,7 +83,7 @@ const API_ENDPOINTS = [
 
 const APIDocs = () => {
   return (
-    <Layout title="API docs - Jinx Capital">
+    <Layout title="API docs - JINX CAPITAL">
       <div className={styles.container}>
         <h1>API Docs</h1>
         <p className={styles.baseUrl}>

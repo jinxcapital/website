@@ -10,10 +10,10 @@ const Landing = () => {
 
   const title = useMemo(() => {
     if (bitcoin) {
-      return `Jinx Capital - Bitcoin: ${formatCurrency(bitcoin.price)}`;
+      return `Bitcoin: ${formatCurrency(bitcoin.price)} | JINX CAPITAL`;
     }
 
-    return 'Jinx Capital';
+    return 'JINX CAPITAL';
   }, [bitcoin]);
 
   const description = useMemo(() => {
