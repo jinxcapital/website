@@ -13,7 +13,7 @@ const API_ENDPOINTS = [
       'Get a list of coins with their id, symbol & name. This endpoint has no pagination and returns all available coins, it can however be filter using the filter param.',
     queryParams: {
       filter: {
-        description: 'A filter to the filter the result set on name or symbol.',
+        description: 'A filter on name or symbol, must be exact match.',
         type: 'string',
         examples: ['bitcoin', 'btc', 'ethereum', 'eth'],
       },
@@ -32,6 +32,7 @@ const API_ENDPOINTS = [
         examples: ['bitcoin', 'ethereum', 'litecoin'],
       },
     },
+    examples: ['/coins/bitcoin', '/coins/ethereum', '/coins/litecoin'],
   },
   {
     method: 'GET',
@@ -44,12 +45,31 @@ const API_ENDPOINTS = [
         examples: ['bitcoin', 'ethereum', 'litecoin'],
       },
     },
+    examples: [
+      '/coins/bitcoin/image.png',
+      '/coins/ethereum/image.png',
+      '/coins/litecoin/image.png',
+    ],
   },
   {
     method: 'GET',
     path: '/coins-top',
     description:
       'Get detailed info for top 100 coins (rank, price, price change, market cap, ath, pullback, website, ...).',
+    descriptionExtended:
+      'Get detailed info for top 100 coins (rank, price, price change, market cap, ath, pullback, website, ...). This endpoint has no pagination, it can however be filter using the filter param.',
+    queryParams: {
+      filter: {
+        description: 'A filter on name or symbol, must be exact match.',
+        type: 'string',
+        examples: ['bitcoin', 'btc', 'ethereum', 'eth'],
+      },
+    },
+    examples: [
+      '/coins-top',
+      '/coins-top?filter=bitcoin',
+      '/coins-top?filter=eth',
+    ],
   },
   {
     method: 'GET',
@@ -62,6 +82,11 @@ const API_ENDPOINTS = [
         examples: ['bitcoin', 'ethereum', 'litecoin'],
       },
     },
+    examples: [
+      '/exchange-flows/bitcoin',
+      '/exchange-flows/ethereum',
+      '/exchange-flows/litecoin',
+    ],
   },
   {
     method: 'GET',
@@ -90,6 +115,11 @@ const API_ENDPOINTS = [
         examples: ['btc:usd', 'eth:usdc', 'bnb:busd'],
       },
     },
+    examples: [
+      '/chart/btc:usd.jpg',
+      '/chart/eth:usdc.jpg',
+      '/chart/bnb:busd.jpg',
+    ],
   },
 ];
 
@@ -137,11 +167,11 @@ const APIDocs = () => {
                         <li key={`api-endpoint:${index}-param:${paramIndex}`}>
                           <strong className={styles.param}>:{param}</strong>
                           <br />
-                          <strong>description:</strong> {info.description}
+                          <strong>Description:</strong> {info.description}
                           <br />
-                          <strong>type:</strong> {info.type}
+                          <strong>Type:</strong> {info.type}
                           <br />
-                          <strong>examples:</strong> {info.examples.join(', ')}
+                          <strong>Examples:</strong> {info.examples.join(', ')}
                         </li>
                       ),
                     )}
@@ -157,11 +187,11 @@ const APIDocs = () => {
                         >
                           <strong className={styles.param}>:{param}</strong>
                           <br />
-                          <strong>description:</strong> {info.description}
+                          <strong>Description:</strong> {info.description}
                           <br />
-                          <strong>type:</strong> {info.type}
+                          <strong>Type:</strong> {info.type}
                           <br />
-                          <strong>examples:</strong> {info.examples.join(', ')}
+                          <strong>Examples:</strong> {info.examples.join(', ')}
                         </li>
                       ),
                     )}
