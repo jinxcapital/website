@@ -1,4 +1,6 @@
 .container {
+  @apply text-sm;
+
   & .baseUrl {
     @apply mt-4;
   }
@@ -7,8 +9,8 @@
     @apply mt-4;
 
     & li {
-      @apply mb-3;
-      @apply border-2 border-tint-dark p-1.5;
+      @apply mb-2;
+      @apply border-2 border-tint-dark p-1;
       @apply rounded-lg;
       @apply flex items-center;
       @apply cursor-pointer;
@@ -24,14 +26,14 @@
         @apply bg-tint-dark;
         @apply p-1 px-3;
         @apply rounded;
-        @apply mr-3;
+        @apply mr-2;
 
         @apply text-tint-light;
       }
 
       & .path {
         @apply font-semibold font-mono;
-        @apply mr-3;
+        @apply mr-2;
       }
 
       & .description {
