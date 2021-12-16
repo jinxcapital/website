@@ -58,6 +58,7 @@
       &:focus {
         @apply bg-tint-dark;
         @apply text-tint-light;
+        @apply ring-0 outline-none;
 
         & .method {
           @apply text-tint-dark;
