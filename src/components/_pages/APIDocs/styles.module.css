@@ -8,12 +8,26 @@
   & .docs {
     @apply mt-4;
 
-    & li {
+    & > li {
       @apply mb-2;
       @apply border-2 border-tint-dark p-1;
       @apply rounded-lg;
-      @apply flex items-center;
       @apply cursor-pointer;
+
+      & .summary {
+        @apply flex items-center;
+        @apply pointer-events-none;
+      }
+
+      & .content {
+        @apply hidden;
+        @apply -mx-1.5 px-2 mt-1.5 pt-1.5;
+        @apply border-t border-tint-light  border-opacity-10;
+      }
+
+      & .params {
+        @apply mt-1;
+      }
 
       & span {
         @apply inline-block;
@@ -40,14 +54,24 @@
         @apply truncate;
       }
 
-      &:hover {
+      &:hover,
+      &:focus {
         @apply bg-tint-dark;
-
         @apply text-tint-light;
 
         & .method {
           @apply text-tint-dark;
           @apply bg-tint-light;
+        }
+      }
+
+      &:focus {
+        & .content {
+          @apply block;
+        }
+
+        & .description {
+          @apply hidden;
         }
       }
     }

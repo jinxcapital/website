@@ -13,6 +13,12 @@ const API_ENDPOINTS = [
     path: '/coins/:id',
     description:
       'Get a detailed info for a coin (rank, price, price change, market cap, ath, pullback, website, ...)',
+    // params: {
+    //   id: {
+    //     type: 'string',
+    //     examples: ['bitcoin', 'ethereum', 'litecoin'],
+    //   },
+    // },
   },
   {
     method: 'GET',
@@ -57,10 +63,28 @@ const APIDocs = () => {
         </p>
         <ul className={styles.docs}>
           {API_ENDPOINTS.map((endpoint, index) => (
-            <li key={`api-endpoint:${index}`}>
-              <span className={styles.method}>{endpoint.method}</span>
-              <span className={styles.path}>{endpoint.path}</span>
-              <span className={styles.description}>{endpoint.description}</span>
+            <li key={`api-endpoint:${index}`} tabIndex={index}>
+              <div className={styles.summary}>
+                <span className={styles.method}>{endpoint.method}</span>
+                <span className={styles.path}>{endpoint.path}</span>
+                <span className={styles.description}>
+                  {endpoint.description}
+                </span>
+              </div>
+              <div className={styles.content}>
+                <p>{endpoint.description}</p>
+                {endpoint.params && (
+                  <ul className={styles.params}>
+                    {Object.entries(endpoint.params).map(
+                      ([param], paramIndex) => (
+                        <li key={`api-endpoint:${index}-param:${paramIndex}`}>
+                          <strong>{param}</strong>
+                        </li>
+                      ),
+                    )}
+                  </ul>
+                )}
+              </div>
             </li>
           ))}
         </ul>
