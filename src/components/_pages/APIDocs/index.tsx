@@ -121,6 +121,13 @@ const API_ENDPOINTS = [
       '/exchange-flows/litecoin',
     ],
   },
+  {
+    method: 'GET',
+    path: '/leverage',
+    description:
+      'Info about leverage in the market (open interest, liquidations last 24h, long/short ratio).',
+    examples: ['/leverage'],
+  },
 ];
 
 const APIDocs = () => {
