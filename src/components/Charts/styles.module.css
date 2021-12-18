@@ -1,8 +1,13 @@
 .container {
-  @apply overflow-x-auto whitespace-nowrap;
-  @apply -mx-2;
+  @apply grid gap-y-4 gap-x-0 grid-cols-3;
 
-  scroll-snap-type: x mandatory;
+  @media (max-width: 1024px) {
+    @apply block;
+    @apply overflow-x-auto whitespace-nowrap;
+    @apply -mx-2;
+
+    scroll-snap-type: x mandatory;
+  }
 
   & .link {
     @apply inline-block;
@@ -10,6 +15,12 @@
     @apply mx-2;
 
     scroll-snap-align: center;
+
+    @media (min-width: 1024px) {
+      &:last-child {
+        @apply hidden;
+      }
+    }
   }
 
   & img {
