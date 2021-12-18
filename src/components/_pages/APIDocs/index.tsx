@@ -73,23 +73,6 @@ const API_ENDPOINTS = [
   },
   {
     method: 'GET',
-    path: '/exchange-flows/:id',
-    description: 'Get exchange flow data for a coin.',
-    params: {
-      id: {
-        description: 'The id of the coin.',
-        type: 'string',
-        examples: ['bitcoin', 'ethereum', 'litecoin'],
-      },
-    },
-    examples: [
-      '/exchange-flows/bitcoin',
-      '/exchange-flows/ethereum',
-      '/exchange-flows/litecoin',
-    ],
-  },
-  {
-    method: 'GET',
     path: '/candles/:pair',
     description:
       'Get candle data for a pair (high, low, open, close, timestamp).',
@@ -119,6 +102,23 @@ const API_ENDPOINTS = [
       '/chart/btc:usd.jpg',
       '/chart/eth:usdc.jpg',
       '/chart/bnb:busd.jpg',
+    ],
+  },
+  {
+    method: 'GET',
+    path: '/exchange-flows/:id',
+    description: 'Get exchange flow data for a coin.',
+    params: {
+      id: {
+        description: 'The id of the coin.',
+        type: 'string',
+        examples: ['bitcoin', 'ethereum', 'litecoin'],
+      },
+    },
+    examples: [
+      '/exchange-flows/bitcoin',
+      '/exchange-flows/ethereum',
+      '/exchange-flows/litecoin',
     ],
   },
 ];
