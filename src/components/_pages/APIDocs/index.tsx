@@ -207,6 +207,7 @@ const APIDocs = () => {
                           target="_blank"
                           rel="noreferrer"
                         >
+                          {process.env.NEXT_PUBLIC_API_URL}
                           {example}
                         </a>
                       </li>
