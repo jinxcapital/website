@@ -87,9 +87,7 @@ const CoreData = () => {
                 {leverage?.longRate && leverage?.shortRate
                   ? `${percentageFormatter.format(
                       leverage?.longRate / 100,
-                    )} ${percentageFormatter.format(
-                      leverage?.shortRate / 100,
-                    )} ${leverage?.longRate > 50 ? '▲' : '▼'}`
+                    )} ${percentageFormatter.format(leverage?.shortRate / 100)}`
                   : '--'}
               </span>
             </li>
@@ -121,10 +119,7 @@ const CoreData = () => {
                   return (
                     <li key={`aggr-funding:${coin}`}>
                       <strong>{coin?.name}</strong>{' '}
-                      <span>
-                        {fundingFormatter.format(rate)}
-                        {rate === 0.0001 ? '' : rate > 0.0001 ? ' ▼' : ' ▲'}
-                      </span>
+                      <span>{fundingFormatter.format(rate)}</span>
                     </li>
                   );
                 })}
