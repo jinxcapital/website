@@ -1,0 +1,27 @@
+.container {
+  @apply text-sm;
+
+  & .entry {
+    @apply px-3 py-2 mb-8 mt-2;
+    @apply inline-block;
+    @apply border-tint-dark;
+
+    border-left-width: 5px;
+
+    & .title {
+      @apply mb-1.5 inline-block;
+    }
+
+    & ul {
+      @apply -mx-1.5;
+
+      & li {
+        @apply inline-block px-1.5;
+
+        & span {
+          font-variant-numeric: tabular-nums;
+        }
+      }
+    }
+  }
+}

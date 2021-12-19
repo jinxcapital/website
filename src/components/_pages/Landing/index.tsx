@@ -1,5 +1,5 @@
-import BitcoinExchangeNetflow from 'components/BitcoinExchangeNetflow';
 import Charts from 'components/Charts';
+import BitcoinExchangeNetflow from 'components/CoreData';
 import Layout from 'components/Layout';
 import { useCoins } from 'data/coins/hooks';
 import { useMemo } from 'react';
