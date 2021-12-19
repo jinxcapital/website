@@ -1,9 +1,11 @@
+import { useCoins } from 'data/coins/hooks';
 import { useMemo } from 'react';
 import useSWR from 'swr';
 
 const fetcher = (url: string) => fetch(url).then((r) => r.json());
 
 export const useFunding = (refreshInterval = 30000) => {
+  const { coins } = useCoins(100);
   const responseFunding = useSWR(
     `${process.env.NEXT_PUBLIC_API_URL}/funding`,
     fetcher,
@@ -13,8 +15,19 @@ export const useFunding = (refreshInterval = 30000) => {
   );
 
   const funding = useMemo(() => {
-    return responseFunding?.data?.data;
-  }, [responseFunding?.data?.data]);
+    return coins
+      .map((coin) => {
+        const rates = Object.entries(responseFunding?.data?.data)
+          .find(([coinId]) => coinId === coin.id)
+          ?.pop();
+        if (rates) {
+          return { coin, rates };
+        }
+
+        return null;
+      })
+      .filter(Boolean);
+  }, [responseFunding?.data?.data, coins]);
 
   return useMemo(() => ({ funding }), [funding]);
 };

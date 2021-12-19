@@ -20,7 +20,6 @@ const fundingFormatter = new Intl.NumberFormat('en-US', {
 });
 
 const CoreData = () => {
-  const { coins } = useCoins();
   const { exchangeNetflow } = useExchangeNetflow('bitcoin');
   const { leverage } = useLeverage();
   const { funding } = useFunding();
@@ -96,33 +95,30 @@ const CoreData = () => {
       )}
       {funding &&
         Array.from(
-          Array(Math.ceil(Object.keys(funding).length / 3)).keys(),
+          Array(Math.floor(Object.keys(funding).length / 3)).keys(),
         ).map((index) => (
           <li className={styles.entry} key={`aggr-funding.list:${index}`}>
             <strong className={styles.title}>Aggregated funding rates</strong>
             <ul>
-              {Object.entries(funding)
-                .slice(index * 3, index * 3 + 3)
-                .map(([coinId, data]) => {
-                  const coin = coins.find((coin) => coin.id === coinId);
-                  const rates = (data as Array<{ rate: number }>).filter(
-                    (value) => !isNaN(value.rate),
-                  );
+              {funding.slice(index * 3, index * 3 + 3).map((funding) => {
+                const rates = (
+                  funding?.rates as Array<{ rate: number }>
+                ).filter((value) => !isNaN(value.rate));
 
-                  const rate =
-                    rates.reduce((sum, value) => {
-                      return sum + value.rate;
-                    }, 0) /
-                    rates.length /
-                    100;
+                const rate =
+                  rates.reduce((sum, value) => {
+                    return sum + value.rate;
+                  }, 0) /
+                  rates.length /
+                  100;
 
-                  return (
-                    <li key={`aggr-funding:${coin}`}>
-                      <strong>{coin?.name}</strong>{' '}
-                      <span>{fundingFormatter.format(rate)}</span>
-                    </li>
-                  );
-                })}
+                return (
+                  <li key={`aggr-funding:${funding?.coin.id}`}>
+                    <strong>{funding?.coin.name}</strong>{' '}
+                    <span>{fundingFormatter.format(rate)}</span>
+                  </li>
+                );
+              })}
             </ul>
           </li>
         ))}
