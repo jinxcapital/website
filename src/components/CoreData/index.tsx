@@ -1,4 +1,3 @@
-import { useCoins } from 'data/coins/hooks';
 import { useExchangeNetflow } from 'data/exchange-netflow/hooks';
 import { useFunding } from 'data/funding/hooks';
 import { useLeverage } from 'data/leverage/hooks';
