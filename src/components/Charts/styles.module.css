@@ -1,10 +1,10 @@
 .container {
   @apply grid gap-y-4 gap-x-0 grid-cols-3;
+  @apply -mx-2;
 
   @media (max-width: 1024px) {
     @apply block;
     @apply overflow-x-auto whitespace-nowrap;
-    @apply -mx-2;
 
     scroll-snap-type: x mandatory;
   }
@@ -25,7 +25,7 @@
 
   & img {
     @apply inline-block;
-    @apply border border-dotted border-tint-dark;
+    @apply border border-tint-dark;
 
     &.new {
       @apply border-transparent;
