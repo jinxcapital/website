@@ -16,6 +16,7 @@ const fundingFormatter = new Intl.NumberFormat('en-US', {
   style: 'percent',
   minimumFractionDigits: 4,
   maximumFractionDigits: 4,
+  signDisplay: 'always',
 });
 
 const CoreData = () => {
@@ -86,7 +87,9 @@ const CoreData = () => {
                 {leverage?.longRate && leverage?.shortRate
                   ? `${percentageFormatter.format(
                       leverage?.longRate / 100,
-                    )} ${percentageFormatter.format(leverage?.shortRate / 100)}`
+                    )} ${percentageFormatter.format(
+                      leverage?.shortRate / 100,
+                    )} ${leverage?.longRate > 50 ? '▲' : '▼'}`
                   : '--'}
               </span>
             </li>
@@ -108,17 +111,19 @@ const CoreData = () => {
                     (value) => !isNaN(value.rate),
                   );
 
+                  const rate =
+                    rates.reduce((sum, value) => {
+                      return sum + value.rate;
+                    }, 0) /
+                    rates.length /
+                    100;
+
                   return (
                     <li key={`aggr-funding:${coin}`}>
                       <strong>{coin?.name}</strong>{' '}
                       <span>
-                        {fundingFormatter.format(
-                          rates.reduce((sum, value) => {
-                            return sum + value.rate;
-                          }, 0) /
-                            rates.length /
-                            100,
-                        )}
+                        {fundingFormatter.format(rate)}
+                        {rate === 0.0001 ? '' : rate > 0.0001 ? ' ▼' : ' ▲'}
                       </span>
                     </li>
                   );
