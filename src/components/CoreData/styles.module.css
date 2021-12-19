@@ -35,6 +35,10 @@
       & li {
         /* @apply inline-block px-1.5; */
 
+        & strong {
+          @apply capitalize;
+        }
+
         & span {
           font-variant-numeric: tabular-nums;
         }

@@ -1,4 +1,5 @@
 import { useExchangeNetflow } from 'data/exchange-netflow/hooks';
+import { useFunding } from 'data/funding/hooks';
 import { useLeverage } from 'data/leverage/hooks';
 import { formatBigNumber, formatCurrenyCompact } from 'utils/formatters';
 
@@ -10,15 +11,22 @@ const percentageFormatter = new Intl.NumberFormat('en-US', {
   maximumFractionDigits: 2,
 });
 
+const fundingFormatter = new Intl.NumberFormat('en-US', {
+  style: 'percent',
+  minimumFractionDigits: 4,
+  maximumFractionDigits: 4,
+});
+
 const CoreData = () => {
   const { exchangeNetflow } = useExchangeNetflow('bitcoin');
   const { leverage } = useLeverage();
+  const { funding } = useFunding();
 
   return (
     <ul className={styles.container}>
       {exchangeNetflow && (
         <li className={styles.entry}>
-          <strong className={styles.title}>Bitcoin exchange netflow</strong>{' '}
+          <strong className={styles.title}>Bitcoin exchange netflow</strong>
           <ul>
             <li>
               <strong>24 hours</strong>{' '}
@@ -52,7 +60,7 @@ const CoreData = () => {
       )}
       {leverage && (
         <li className={styles.entry}>
-          <strong className={styles.title}>Leverage in the market</strong>{' '}
+          <strong className={styles.title}>Leverage in the market</strong>
           <ul>
             <li>
               <strong>Open interest</strong>{' '}
@@ -80,6 +88,33 @@ const CoreData = () => {
                   : '--'}
               </span>
             </li>
+          </ul>
+        </li>
+      )}
+      {funding && (
+        <li className={styles.entry}>
+          <strong className={styles.title}>Aggregated funding rates</strong>
+          <ul>
+            {Object.entries(funding)
+              .slice(0, 3)
+              .map(([coin, data]) => (
+                <li key={`aggr-funding:${coin}`}>
+                  <strong>{coin}</strong>{' '}
+                  <span>
+                    {fundingFormatter.format(
+                      (data as Array<{ rate: number }>).reduce(function (
+                        sum,
+                        value,
+                      ) {
+                        return sum + value.rate;
+                      },
+                      0) /
+                        (data as Array<unknown>).length /
+                        100,
+                    )}
+                  </span>
+                </li>
+              ))}
           </ul>
         </li>
       )}
