@@ -1,22 +1,39 @@
 .container {
   @apply text-sm;
+  @apply mb-6;
+  @apply block;
+  @apply overflow-x-auto whitespace-nowrap;
+
+  scroll-snap-type: x mandatory;
+
+  @media (max-width: 540px) {
+    @apply mb-4;
+  }
 
   & .entry {
-    @apply px-3 py-2 mb-8 mt-2;
+    @apply mr-4;
     @apply inline-block;
-    @apply border-tint-dark;
+    @apply border border-tint-dark;
 
-    border-left-width: 5px;
+    scroll-snap-align: start;
+
+    @media (max-width: 540px) {
+      @apply mr-3;
+    }
 
     & .title {
-      @apply mb-1.5 inline-block;
+      @apply block px-2 py-1;
+      @apply uppercase text-xs;
+      @apply bg-tint-dark text-tint-light;
     }
 
     & ul {
-      @apply -mx-1.5;
+      @apply px-2 py-1;
+
+      /* @apply -mx-1.5; */
 
       & li {
-        @apply inline-block px-1.5;
+        /* @apply inline-block px-1.5; */
 
         & span {
           font-variant-numeric: tabular-nums;

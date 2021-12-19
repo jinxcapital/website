@@ -1,3 +1,10 @@
+const currencyFormatterCompact = new Intl.NumberFormat('en-US', {
+  style: 'currency',
+  currency: 'USD',
+  notation: 'compact',
+  maximumFractionDigits: 1,
+});
+
 const currencyFormatterBig = new Intl.NumberFormat('en-US', {
   style: 'currency',
   currency: 'USD',
@@ -39,6 +46,7 @@ const bigNumberFormatter = Intl.NumberFormat('en-US', {
   signDisplay: 'always',
 });
 
+export const formatCurrenyCompact = currencyFormatterCompact.format;
 export const formatCurrenyBig = currencyFormatterBig.format;
 export const formatCurrency = currencyFormatter.format;
 export const formatCurrencySmall = currencyFormatterSmall.format;
