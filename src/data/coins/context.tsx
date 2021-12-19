@@ -36,7 +36,7 @@ export const CoinsContextProvider = ({
       return [];
     }
 
-    return data?.data?.slice(0, 15);
+    return data?.data;
   }, [data]);
 
   const bitcoin: Coin | null = useMemo(
