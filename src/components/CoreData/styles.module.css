@@ -23,25 +23,14 @@
 
     & .title {
       @apply block px-2 py-1;
-      @apply uppercase text-xs;
       @apply bg-tint-dark text-tint-light;
     }
 
     & ul {
       @apply px-2 py-1;
 
-      /* @apply -mx-1.5; */
-
-      & li {
-        /* @apply inline-block px-1.5; */
-
-        & strong {
-          @apply capitalize;
-        }
-
-        & span {
-          font-variant-numeric: tabular-nums;
-        }
+      & li span {
+        font-variant-numeric: tabular-nums;
       }
     }
   }

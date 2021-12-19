@@ -99,7 +99,9 @@ const CoreData = () => {
               .slice(0, 3)
               .map(([coin, data]) => (
                 <li key={`aggr-funding:${coin}`}>
-                  <strong>{coin}</strong>{' '}
+                  <strong>
+                    {coin.charAt(0).toUpperCase() + coin.slice(1)}
+                  </strong>{' '}
                   <span>
                     {fundingFormatter.format(
                       (data as Array<{ rate: number }>).reduce(function (
