@@ -53,7 +53,7 @@ const API_ENDPOINTS = [
   },
   {
     method: 'GET',
-    path: '/coins-top',
+    path: '/coins/top',
     description:
       'Get detailed info for top 100 coins (rank, price, price change, market cap, ath, pullback, website, ...).',
     descriptionExtended:
@@ -66,9 +66,9 @@ const API_ENDPOINTS = [
       },
     },
     examples: [
-      '/coins-top',
-      '/coins-top?filter=bitcoin',
-      '/coins-top?filter=eth',
+      '/coins/top',
+      '/coins/top?filter=bitcoin',
+      '/coins/top?filter=eth',
     ],
   },
   {

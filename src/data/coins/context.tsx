@@ -24,7 +24,7 @@ export const CoinsContextProvider = ({
   refreshInterval,
 }: CoinsContextProviderProps) => {
   const { data } = useSWR(
-    `${process.env.NEXT_PUBLIC_API_URL}/coins-top`,
+    `${process.env.NEXT_PUBLIC_API_URL}/coins/top`,
     fetcher,
     {
       refreshInterval,
