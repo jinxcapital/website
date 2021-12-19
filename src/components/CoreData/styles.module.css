@@ -11,23 +11,27 @@
   }
 
   & .entry {
-    @apply mr-4;
+    @apply mr-12;
     @apply inline-block;
-    @apply border border-tint-dark;
+    @apply border-l border-tint-dark;
 
+    border-left-width: 4px;
     scroll-snap-align: start;
 
+    @media (max-width: 768px) {
+      @apply mr-6;
+    }
+
     @media (max-width: 540px) {
-      @apply mr-3;
+      @apply mr-4;
     }
 
     & .title {
-      @apply block px-2 py-1;
-      @apply bg-tint-dark text-tint-light;
+      @apply block px-2 py-0.5;
     }
 
     & ul {
-      @apply px-2 py-1;
+      @apply px-2.5 py-0.5;
 
       & li span {
         font-variant-numeric: tabular-nums;
