@@ -128,6 +128,25 @@ const API_ENDPOINTS = [
       'Info about leverage in the market (open interest, liquidations last 24h, long/short ratio).',
     examples: ['/leverage'],
   },
+  {
+    method: 'GET',
+    path: '/funding',
+    description: 'Get funding rate for coins per exchange.',
+    examples: ['/funding'],
+  },
+  {
+    method: 'GET',
+    path: '/funding/:id',
+    description: 'Get funding rate for a coin per exchange.',
+    params: {
+      id: {
+        description: 'The id of the coin.',
+        type: 'string',
+        examples: ['bitcoin', 'ethereum', 'litecoin'],
+      },
+    },
+    examples: ['/funding/bitcoin', '/funding/ethereum', '/funding/litecoin'],
+  },
 ];
 
 const APIDocs = () => {
