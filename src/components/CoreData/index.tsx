@@ -108,9 +108,7 @@ const CoreData = () => {
         </div>
       </li>
       {funding &&
-        Array.from(
-          Array(Math.floor(Object.keys(funding).length / 3)).keys(),
-        ).map((index) => (
+        Array.from(Array(Math.floor(12)).keys()).map((index) => (
           <li className={styles.entry} key={`aggr-funding.list:${index}`}>
             <div>
               <strong className={styles.title}>Aggregated funding rates</strong>
