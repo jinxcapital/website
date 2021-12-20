@@ -1,3 +1,4 @@
+import TextSpinner from 'components/TextSpinner';
 import { useExchangeNetflow } from 'data/exchange-netflow/hooks';
 import { useFunding } from 'data/funding/hooks';
 import { useLeverage } from 'data/leverage/hooks';
@@ -25,83 +26,87 @@ const CoreData = () => {
 
   return (
     <ul className={styles.container}>
-      {exchangeNetflow && (
-        <li className={styles.entry}>
-          <div>
-            <strong className={styles.title}>Bitcoin exchange netflow</strong>
-            <ul>
-              <li>
-                <strong>24H</strong>{' '}
-                <span>
-                  {exchangeNetflow?.change?.day
-                    ? formatBigNumber(exchangeNetflow.change.day)
-                    : '--'}{' '}
-                  BTC
-                </span>
-              </li>
-              <li>
-                <div>
+      <li className={styles.entry}>
+        <div>
+          <strong className={styles.title}>Bitcoin exchange netflow</strong>
+          <ul>
+            <li>
+              {exchangeNetflow?.change?.day ? (
+                <>
+                  <strong>24H</strong>{' '}
+                  <span>{formatBigNumber(exchangeNetflow.change.day)} BTC</span>
+                </>
+              ) : (
+                <TextSpinner />
+              )}
+            </li>
+            <li>
+              {exchangeNetflow?.change?.week ? (
+                <>
                   <strong>7D</strong>{' '}
                   <span>
-                    {exchangeNetflow?.change?.week
-                      ? formatBigNumber(exchangeNetflow.change.week)
-                      : '--'}{' '}
-                    BTC
+                    {formatBigNumber(exchangeNetflow.change.week)} BTC
                   </span>
-                </div>
-              </li>
-              <li>
-                <div>
+                </>
+              ) : (
+                <TextSpinner />
+              )}
+            </li>
+            <li>
+              {exchangeNetflow?.change?.month ? (
+                <>
                   <strong>30D</strong>{' '}
                   <span>
-                    {exchangeNetflow?.change?.month
-                      ? formatBigNumber(exchangeNetflow.change.month)
-                      : '--'}{' '}
-                    BTC
+                    {formatBigNumber(exchangeNetflow.change.month)} BTC
                   </span>
-                </div>
-              </li>
-            </ul>
-          </div>
-        </li>
-      )}
-      {leverage && (
-        <li className={styles.entry}>
-          <div>
-            <strong className={styles.title}>Leverage in the market</strong>
-            <ul>
-              <li>
-                <strong>Open interest</strong>{' '}
-                <span>
-                  {leverage?.openInterest
-                    ? formatCurrenyCompact(leverage?.openInterest)
-                    : '--'}
-                </span>
-              </li>
-              <li>
-                <strong>24H liquidations</strong>{' '}
-                <span>
-                  {leverage?.liquidations24h
-                    ? formatCurrenyCompact(leverage?.liquidations24h)
-                    : '--'}
-                </span>
-              </li>
-              <li>
-                <strong>LSR</strong>{' '}
-                <span>
-                  {leverage?.longRate && leverage?.shortRate
-                    ? `${percentageFormatter.format(
-                        leverage?.longRate / 100,
-                      )} ${percentageFormatter.format(
-                        leverage?.shortRate / 100,
-                      )}`
-                    : '--'}
-                </span>
-              </li>
-            </ul>
-          </div>
-        </li>
-      )}
+                </>
+              ) : (
+                <TextSpinner />
+              )}
+            </li>
+          </ul>
+        </div>
+      </li>
+      <li className={styles.entry}>
+        <div>
+          <strong className={styles.title}>Leverage in the market</strong>
+          <ul>
+            <li>
+              {leverage?.openInterest ? (
+                <>
+                  <strong>Open interest</strong>{' '}
+                  <span>{formatCurrenyCompact(leverage?.openInterest)}</span>
+                </>
+              ) : (
+                <TextSpinner />
+              )}
+            </li>
+            <li>
+              {leverage?.liquidations24h ? (
+                <>
+                  <strong>24H liquidations</strong>{' '}
+                  <span>{formatCurrenyCompact(leverage?.liquidations24h)}</span>
+                </>
+              ) : (
+                <TextSpinner />
+              )}
+            </li>
+            <li>
+              {leverage?.longRate && leverage?.shortRate ? (
+                <>
+                  <strong>LSR</strong>{' '}
+                  <span>
+                    {percentageFormatter.format(leverage?.longRate / 100)}{' '}
+                    {percentageFormatter.format(leverage?.shortRate / 100)}
+                  </span>
+                </>
+              ) : (
+                <TextSpinner />
+              )}
+            </li>
+          </ul>
+        </div>
+      </li>
       {funding &&
         Array.from(
           Array(Math.floor(Object.keys(funding).length / 3)).keys(),
