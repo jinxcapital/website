@@ -113,7 +113,7 @@ const CoreData = () => {
             </ul>
           </div>
         </li>
-        {funding.length &&
+        {!!funding.length &&
           Array.from(Array(Math.floor(7)).keys()).map((index) => (
             <li className={styles.entry} key={`aggr-funding.list:${index}`}>
               <div>
