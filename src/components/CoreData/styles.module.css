@@ -20,7 +20,7 @@
     @apply transform-gpu;
 
     &.loaded {
-      animation: scroll 40s linear infinite 6s;
+      animation: scroll 50s linear infinite 6s;
     }
 
     &:hover {
