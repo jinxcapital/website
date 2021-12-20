@@ -27,10 +27,10 @@ const CoreData = () => {
     <ul className={styles.container}>
       {exchangeNetflow && (
         <li className={styles.entry}>
-          <strong className={styles.title}>Bitcoin exchange netflow</strong>
-          <ul>
-            <li>
-              <div>
+          <div>
+            <strong className={styles.title}>Bitcoin exchange netflow</strong>
+            <ul>
+              <li>
                 <strong>24H</strong>{' '}
                 <span>
                   {exchangeNetflow?.change?.day
@@ -38,59 +38,55 @@ const CoreData = () => {
                     : '--'}{' '}
                   BTC
                 </span>
-              </div>
-            </li>
-            <li>
-              <div>
-                <strong>7D</strong>{' '}
-                <span>
-                  {exchangeNetflow?.change?.week
-                    ? formatBigNumber(exchangeNetflow.change.week)
-                    : '--'}{' '}
-                  BTC
-                </span>
-              </div>
-            </li>
-            <li>
-              <div>
-                <strong>30D</strong>{' '}
-                <span>
-                  {exchangeNetflow?.change?.month
-                    ? formatBigNumber(exchangeNetflow.change.month)
-                    : '--'}{' '}
-                  BTC
-                </span>
-              </div>
-            </li>
-          </ul>
+              </li>
+              <li>
+                <div>
+                  <strong>7D</strong>{' '}
+                  <span>
+                    {exchangeNetflow?.change?.week
+                      ? formatBigNumber(exchangeNetflow.change.week)
+                      : '--'}{' '}
+                    BTC
+                  </span>
+                </div>
+              </li>
+              <li>
+                <div>
+                  <strong>30D</strong>{' '}
+                  <span>
+                    {exchangeNetflow?.change?.month
+                      ? formatBigNumber(exchangeNetflow.change.month)
+                      : '--'}{' '}
+                    BTC
+                  </span>
+                </div>
+              </li>
+            </ul>
+          </div>
         </li>
       )}
       {leverage && (
         <li className={styles.entry}>
-          <strong className={styles.title}>Leverage in the market</strong>
-          <ul>
-            <li>
-              <div>
+          <div>
+            <strong className={styles.title}>Leverage in the market</strong>
+            <ul>
+              <li>
                 <strong>Open interest</strong>{' '}
                 <span>
                   {leverage?.openInterest
                     ? formatCurrenyCompact(leverage?.openInterest)
                     : '--'}
                 </span>
-              </div>
-            </li>
-            <li>
-              <div>
+              </li>
+              <li>
                 <strong>24H liquidations</strong>{' '}
                 <span>
                   {leverage?.liquidations24h
                     ? formatCurrenyCompact(leverage?.liquidations24h)
                     : '--'}
                 </span>
-              </div>
-            </li>
-            <li>
-              <div>
+              </li>
+              <li>
                 <strong>LSR</strong>{' '}
                 <span>
                   {leverage?.longRate && leverage?.shortRate
@@ -101,9 +97,9 @@ const CoreData = () => {
                       )}`
                     : '--'}
                 </span>
-              </div>
-            </li>
-          </ul>
+              </li>
+            </ul>
+          </div>
         </li>
       )}
       {funding &&

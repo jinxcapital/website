@@ -128,7 +128,9 @@ const Header = () => {
                     ? formatCurrencySmall(coin.price)
                     : formatCurrencyExtraSmall(coin.price)}{' '}
                   {coin.percentageChange24h > 0 ? '▲' : '▼'}{' '}
-                  {formatPercentage(coin.percentageChange24h / 100)}
+                  <span>
+                    {formatPercentage(coin.percentageChange24h / 100)}
+                  </span>
                 </span>
               </li>
             ))}

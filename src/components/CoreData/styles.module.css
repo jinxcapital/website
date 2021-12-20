@@ -13,14 +13,14 @@
   & .entry {
     @apply inline-block;
     @apply border-l border-tint-dark;
-    @apply mr-2.5;
+    @apply mr-4;
 
-    border-left-width: 4px;
+    border-left-width: 5px;
     scroll-snap-align: start;
 
     & > div {
       @apply border-t border-b border-tint-dark border-dotted;
-      @apply py-1 px-2;
+      @apply py-1 px-1;
       @apply mx-1;
     }
 
