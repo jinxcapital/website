@@ -1,8 +1,27 @@
 .container {
   @apply text-sm;
 
+  & h1 {
+    @apply mt-4 mb-2;
+    @apply font-bold;
+    @apply text-xl;
+  }
+
   & .baseUrl {
     @apply mt-4;
+  }
+
+  @media (max-width: 540px) {
+    @apply text-xs;
+
+    & h1 {
+      @apply text-lg;
+      @apply m-0;
+    }
+
+    & .baseUrl {
+      @apply mt-2;
+    }
   }
 
   & .docs {

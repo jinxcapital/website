@@ -1,5 +1,5 @@
 .container {
-  @apply text-sm;
+  @apply text-sm leading-snug;
   @apply mb-6;
   @apply block;
   @apply overflow-x-auto whitespace-nowrap;
@@ -8,6 +8,7 @@
 
   @media (max-width: 540px) {
     @apply mb-4;
+    @apply text-xs leading-tight;
   }
 
   & .entry {
@@ -23,7 +24,7 @@
     }
 
     @media (max-width: 540px) {
-      @apply mr-4;
+      @apply mr-2;
     }
 
     & .title {
