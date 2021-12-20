@@ -1,36 +1,57 @@
+@keyframes scroll {
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
 .container {
+  @apply overflow-hidden whitespace-nowrap;
   @apply text-sm leading-tight;
   @apply mb-6;
-  @apply block;
-  @apply overflow-x-auto whitespace-nowrap;
-
-  scroll-snap-type: x mandatory;
+  @apply relative;
+  @apply transform-gpu;
 
   @media (max-width: 540px) {
     @apply mb-4;
   }
 
-  & .entry {
+  & .data {
     @apply inline-block;
-    @apply border-l border-tint-dark;
-    @apply mr-4;
+    @apply transform-gpu;
 
-    border-left-width: 5px;
-    scroll-snap-align: start;
-
-    & > div {
-      @apply border-t border-b border-tint-dark border-dotted;
-      @apply py-1 px-1;
-      @apply mx-1;
+    &.loaded {
+      animation: scroll 40s linear infinite 6s;
     }
 
-    & .title {
-      @apply block mb-1.5;
+    &:hover {
+      animation-play-state: paused;
     }
+  }
 
-    & ul {
-      & li span {
-        font-variant-numeric: tabular-nums;
+  & .coreData {
+    @apply inline-block;
+
+    & .entry {
+      @apply inline-block;
+      @apply border-l border-tint-dark;
+      @apply mr-4;
+
+      border-left-width: 5px;
+
+      & > div {
+        @apply border-t border-b border-tint-dark border-dotted;
+        @apply py-1 px-1;
+        @apply mx-1;
+      }
+
+      & .title {
+        @apply block mb-1.5;
+      }
+
+      & ul {
+        & li span {
+          font-variant-numeric: tabular-nums;
+        }
       }
     }
   }
