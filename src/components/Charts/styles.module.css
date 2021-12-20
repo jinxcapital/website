@@ -1,13 +1,9 @@
 .container {
-  @apply grid gap-y-4 gap-x-0 grid-cols-3;
   @apply -mx-2;
+  @apply block;
+  @apply overflow-x-auto whitespace-nowrap;
 
-  @media (max-width: 1024px) {
-    @apply block;
-    @apply overflow-x-auto whitespace-nowrap;
-
-    scroll-snap-type: x mandatory;
-  }
+  scroll-snap-type: x mandatory;
 
   & .link {
     @apply inline-block;
