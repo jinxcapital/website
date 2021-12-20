@@ -167,7 +167,7 @@
     @apply transform-gpu;
 
     @media (max-width: 540px) {
-      @apply mt-6 text-xs;
+      @apply mt-6;
     }
 
     & .coins {

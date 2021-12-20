@@ -25,7 +25,7 @@
 
   & img {
     @apply inline-block;
-    @apply border border-tint-dark;
+    @apply border border-dotted border-tint-dark;
 
     &.new {
       @apply border-transparent;

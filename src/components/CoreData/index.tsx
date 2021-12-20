@@ -30,31 +30,37 @@ const CoreData = () => {
           <strong className={styles.title}>Bitcoin exchange netflow</strong>
           <ul>
             <li>
-              <strong>24H</strong>{' '}
-              <span>
-                {exchangeNetflow?.change?.day
-                  ? formatBigNumber(exchangeNetflow.change.day)
-                  : '--'}{' '}
-                BTC
-              </span>
+              <div>
+                <strong>24H</strong>{' '}
+                <span>
+                  {exchangeNetflow?.change?.day
+                    ? formatBigNumber(exchangeNetflow.change.day)
+                    : '--'}{' '}
+                  BTC
+                </span>
+              </div>
             </li>
             <li>
-              <strong>7D</strong>{' '}
-              <span>
-                {exchangeNetflow?.change?.week
-                  ? formatBigNumber(exchangeNetflow.change.week)
-                  : '--'}{' '}
-                BTC
-              </span>
+              <div>
+                <strong>7D</strong>{' '}
+                <span>
+                  {exchangeNetflow?.change?.week
+                    ? formatBigNumber(exchangeNetflow.change.week)
+                    : '--'}{' '}
+                  BTC
+                </span>
+              </div>
             </li>
             <li>
-              <strong>30D</strong>{' '}
-              <span>
-                {exchangeNetflow?.change?.month
-                  ? formatBigNumber(exchangeNetflow.change.month)
-                  : '--'}{' '}
-                BTC
-              </span>
+              <div>
+                <strong>30D</strong>{' '}
+                <span>
+                  {exchangeNetflow?.change?.month
+                    ? formatBigNumber(exchangeNetflow.change.month)
+                    : '--'}{' '}
+                  BTC
+                </span>
+              </div>
             </li>
           </ul>
         </li>
@@ -64,30 +70,38 @@ const CoreData = () => {
           <strong className={styles.title}>Leverage in the market</strong>
           <ul>
             <li>
-              <strong>Open interest</strong>{' '}
-              <span>
-                {leverage?.openInterest
-                  ? formatCurrenyCompact(leverage?.openInterest)
-                  : '--'}
-              </span>
+              <div>
+                <strong>Open interest</strong>{' '}
+                <span>
+                  {leverage?.openInterest
+                    ? formatCurrenyCompact(leverage?.openInterest)
+                    : '--'}
+                </span>
+              </div>
             </li>
             <li>
-              <strong>24H liquidations</strong>{' '}
-              <span>
-                {leverage?.liquidations24h
-                  ? formatCurrenyCompact(leverage?.liquidations24h)
-                  : '--'}
-              </span>
+              <div>
+                <strong>24H liquidations</strong>{' '}
+                <span>
+                  {leverage?.liquidations24h
+                    ? formatCurrenyCompact(leverage?.liquidations24h)
+                    : '--'}
+                </span>
+              </div>
             </li>
             <li>
-              <strong>LSR</strong>{' '}
-              <span>
-                {leverage?.longRate && leverage?.shortRate
-                  ? `${percentageFormatter.format(
-                      leverage?.longRate / 100,
-                    )} ${percentageFormatter.format(leverage?.shortRate / 100)}`
-                  : '--'}
-              </span>
+              <div>
+                <strong>LSR</strong>{' '}
+                <span>
+                  {leverage?.longRate && leverage?.shortRate
+                    ? `${percentageFormatter.format(
+                        leverage?.longRate / 100,
+                      )} ${percentageFormatter.format(
+                        leverage?.shortRate / 100,
+                      )}`
+                    : '--'}
+                </span>
+              </div>
             </li>
           </ul>
         </li>
@@ -97,28 +111,30 @@ const CoreData = () => {
           Array(Math.floor(Object.keys(funding).length / 3)).keys(),
         ).map((index) => (
           <li className={styles.entry} key={`aggr-funding.list:${index}`}>
-            <strong className={styles.title}>Aggregated funding rates</strong>
-            <ul>
-              {funding.slice(index * 3, index * 3 + 3).map((funding) => {
-                const rates = (
-                  funding?.rates as Array<{ rate: number }>
-                ).filter((value) => !isNaN(value.rate));
+            <div>
+              <strong className={styles.title}>Aggregated funding rates</strong>
+              <ul>
+                {funding.slice(index * 3, index * 3 + 3).map((funding) => {
+                  const rates = (
+                    funding?.rates as Array<{ rate: number }>
+                  ).filter((value) => !isNaN(value.rate));
 
-                const rate =
-                  rates.reduce((sum, value) => {
-                    return sum + value.rate;
-                  }, 0) /
-                  rates.length /
-                  100;
+                  const rate =
+                    rates.reduce((sum, value) => {
+                      return sum + value.rate;
+                    }, 0) /
+                    rates.length /
+                    100;
 
-                return (
-                  <li key={`aggr-funding:${funding?.coin.id}`}>
-                    <strong>{funding?.coin.name}</strong>{' '}
-                    <span>{fundingFormatter.format(rate)}</span>
-                  </li>
-                );
-              })}
-            </ul>
+                  return (
+                    <li key={`aggr-funding:${funding?.coin.id}`}>
+                      <strong>{funding?.coin.name}</strong>{' '}
+                      <span>{fundingFormatter.format(rate)}</span>
+                    </li>
+                  );
+                })}
+              </ul>
+            </div>
           </li>
         ))}
     </ul>

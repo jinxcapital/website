@@ -12,8 +12,6 @@
   }
 
   @media (max-width: 540px) {
-    @apply text-xs;
-
     & h1 {
       @apply text-lg;
       @apply m-0;

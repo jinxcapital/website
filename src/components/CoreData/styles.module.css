@@ -1,5 +1,5 @@
 .container {
-  @apply text-sm leading-snug;
+  @apply text-sm leading-tight;
   @apply mb-6;
   @apply block;
   @apply overflow-x-auto whitespace-nowrap;
@@ -8,32 +8,27 @@
 
   @media (max-width: 540px) {
     @apply mb-4;
-    @apply text-xs leading-tight;
   }
 
   & .entry {
-    @apply mr-12;
     @apply inline-block;
     @apply border-l border-tint-dark;
+    @apply mr-2.5;
 
     border-left-width: 4px;
     scroll-snap-align: start;
 
-    @media (max-width: 768px) {
-      @apply mr-6;
-    }
-
-    @media (max-width: 540px) {
-      @apply mr-2;
+    & > div {
+      @apply border-t border-b border-tint-dark border-dotted;
+      @apply py-1 px-2;
+      @apply mx-1;
     }
 
     & .title {
-      @apply block px-2 py-0.5;
+      @apply block mb-1.5;
     }
 
     & ul {
-      @apply px-2.5 py-0.5;
-
       & li span {
         font-variant-numeric: tabular-nums;
       }
