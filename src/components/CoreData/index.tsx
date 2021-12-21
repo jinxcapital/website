@@ -2,8 +2,9 @@ import TextSpinner from 'components/TextSpinner';
 import { useExchangeNetflow } from 'data/exchange-netflow/hooks';
 import { useFunding } from 'data/funding/hooks';
 import { useLeverage } from 'data/leverage/hooks';
+import { useTradfi } from 'data/tradfi/hooks';
 import { useCallback } from 'react';
-import { formatBigNumber, formatCurrenyCompact } from 'utils/formatters';
+import { formatCurrenyCompact } from 'utils/formatters';
 
 import styles from './styles.module.css';
 
@@ -11,6 +12,23 @@ const percentageFormatter = new Intl.NumberFormat('en-US', {
   style: 'percent',
   minimumFractionDigits: 2,
   maximumFractionDigits: 2,
+});
+
+const percentageWithSignFormatter = new Intl.NumberFormat('en-US', {
+  style: 'percent',
+  minimumFractionDigits: 2,
+  maximumFractionDigits: 2,
+  signDisplay: 'always',
+});
+
+const formatter = new Intl.NumberFormat('en-US', {
+  minimumFractionDigits: 1,
+  maximumFractionDigits: 1,
+});
+
+const bigNumberFormatter = Intl.NumberFormat('en-US', {
+  maximumFractionDigits: 0,
+  signDisplay: 'always',
 });
 
 const fundingFormatter = new Intl.NumberFormat('en-US', {
@@ -24,10 +42,66 @@ const CoreData = () => {
   const { exchangeNetflow } = useExchangeNetflow('bitcoin');
   const { leverage } = useLeverage();
   const { funding } = useFunding();
+  const { ndx, spx, dji, tradfi } = useTradfi();
 
   const CoreData = useCallback(
     () => (
       <ul className={styles.coreData}>
+        <li className={styles.entry}>
+          <div>
+            <strong className={styles.title}>Tradfi US stock markets</strong>
+            <ul>
+              <li>
+                {spx ? (
+                  <>
+                    <strong>{spx.symbol}</strong>{' '}
+                    <span>{formatter.format(spx.value)}</span>{' '}
+                    <span>
+                      {spx.percentageChange > 0 ? '▲ ' : '▼ '}
+                      {percentageWithSignFormatter.format(
+                        spx.percentageChange / 100,
+                      )}
+                    </span>
+                  </>
+                ) : (
+                  <TextSpinner />
+                )}
+              </li>
+              <li>
+                {ndx ? (
+                  <>
+                    <strong>{ndx.symbol}</strong>{' '}
+                    <span>{formatter.format(ndx.value)}</span>{' '}
+                    <span>
+                      {ndx.percentageChange > 0 ? '▲ ' : '▼ '}
+                      {percentageWithSignFormatter.format(
+                        ndx.percentageChange / 100,
+                      )}
+                    </span>
+                  </>
+                ) : (
+                  <TextSpinner />
+                )}
+              </li>
+              <li>
+                {dji ? (
+                  <>
+                    <strong>{dji.symbol}</strong>{' '}
+                    <span>{formatter.format(dji.value)}</span>{' '}
+                    <span>
+                      {dji.percentageChange > 0 ? '▲ ' : '▼ '}
+                      {percentageWithSignFormatter.format(
+                        dji.percentageChange / 100,
+                      )}
+                    </span>
+                  </>
+                ) : (
+                  <TextSpinner />
+                )}
+              </li>
+            </ul>
+          </div>
+        </li>
         <li className={styles.entry}>
           <div>
             <strong className={styles.title}>Bitcoin exchange netflow</strong>
@@ -37,7 +111,8 @@ const CoreData = () => {
                   <>
                     <strong>24H</strong>{' '}
                     <span>
-                      {formatBigNumber(exchangeNetflow.change.day)} BTC
+                      {bigNumberFormatter.format(exchangeNetflow.change.day)}{' '}
+                      BTC
                     </span>
                   </>
                 ) : (
@@ -49,7 +124,8 @@ const CoreData = () => {
                   <>
                     <strong>7D</strong>{' '}
                     <span>
-                      {formatBigNumber(exchangeNetflow.change.week)} BTC
+                      {bigNumberFormatter.format(exchangeNetflow.change.week)}{' '}
+                      BTC
                     </span>
                   </>
                 ) : (
@@ -61,7 +137,8 @@ const CoreData = () => {
                   <>
                     <strong>30D</strong>{' '}
                     <span>
-                      {formatBigNumber(exchangeNetflow.change.month)} BTC
+                      {bigNumberFormatter.format(exchangeNetflow.change.month)}{' '}
+                      BTC
                     </span>
                   </>
                 ) : (
@@ -88,7 +165,7 @@ const CoreData = () => {
               <li>
                 {leverage?.liquidations24h ? (
                   <>
-                    <strong>24H liquidations</strong>{' '}
+                    <strong>24H liq.</strong>{' '}
                     <span>
                       {formatCurrenyCompact(leverage?.liquidations24h)}
                     </span>
@@ -146,14 +223,16 @@ const CoreData = () => {
           ))}
       </ul>
     ),
-    [funding, leverage, exchangeNetflow],
+    [funding, leverage, exchangeNetflow, ndx, spx, dji],
   );
 
   return (
     <div className={styles.container}>
       <div
         className={`${styles.data} ${
-          exchangeNetflow && leverage && funding ? styles.loaded : ''
+          exchangeNetflow && leverage && funding && tradfi.length
+            ? styles.loaded
+            : ''
         }`}
       >
         <CoreData />
