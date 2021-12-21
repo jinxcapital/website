@@ -106,6 +106,12 @@ const API_ENDPOINTS = [
   },
   {
     method: 'GET',
+    path: '/exchange-flows',
+    description: 'Get exchange flow data for supported coins.',
+    examples: ['/exchange-flows'],
+  },
+  {
+    method: 'GET',
     path: '/exchange-flows/:id',
     description: 'Get exchange flow data for a coin.',
     params: {
