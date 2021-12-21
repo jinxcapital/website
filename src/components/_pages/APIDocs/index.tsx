@@ -147,6 +147,12 @@ const API_ENDPOINTS = [
     },
     examples: ['/funding/bitcoin', '/funding/ethereum', '/funding/litecoin'],
   },
+  {
+    method: 'GET',
+    path: '/tradfi',
+    description: 'Get tradfi indexes.',
+    examples: ['/tradfi'],
+  },
 ];
 
 const APIDocs = () => {
