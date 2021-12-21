@@ -4,7 +4,7 @@ import { useFunding } from 'data/funding/hooks';
 import { useLeverage } from 'data/leverage/hooks';
 import { useTradfi } from 'data/tradfi/hooks';
 import { useCallback } from 'react';
-import { formatCurrenyCompact } from 'utils/formatters';
+import { formatBigNumber, formatCurrenyCompact } from 'utils/formatters';
 
 import styles from './styles.module.css';
 
@@ -26,11 +26,6 @@ const formatter = new Intl.NumberFormat('en-US', {
   maximumFractionDigits: 1,
 });
 
-const bigNumberFormatter = Intl.NumberFormat('en-US', {
-  maximumFractionDigits: 0,
-  signDisplay: 'always',
-});
-
 const fundingFormatter = new Intl.NumberFormat('en-US', {
   style: 'percent',
   minimumFractionDigits: 4,
@@ -39,7 +34,7 @@ const fundingFormatter = new Intl.NumberFormat('en-US', {
 });
 
 const CoreData = () => {
-  const { exchangeNetflow } = useExchangeNetflow('bitcoin');
+  const { exchangeNetflow: bitcoinNetflow } = useExchangeNetflow('bitcoin');
   const { leverage } = useLeverage();
   const { funding } = useFunding();
   const { ndx, spx, dji, tradfi } = useTradfi();
@@ -107,12 +102,15 @@ const CoreData = () => {
             <strong className={styles.title}>Bitcoin exchange netflow</strong>
             <ul>
               <li>
-                {exchangeNetflow?.change?.day ? (
+                {bitcoinNetflow?.diff24h ? (
                   <>
                     <strong>24H</strong>{' '}
+                    <span>{formatBigNumber(bitcoinNetflow.diff24h)} BTC</span>
                     <span>
-                      {bigNumberFormatter.format(exchangeNetflow.change.day)}{' '}
-                      BTC
+                      {bitcoinNetflow.percentageChange24h > 0 ? ' ▲ ' : ' ▼ '}
+                      {percentageWithSignFormatter.format(
+                        bitcoinNetflow.percentageChange24h / 100,
+                      )}
                     </span>
                   </>
                 ) : (
@@ -120,12 +118,15 @@ const CoreData = () => {
                 )}
               </li>
               <li>
-                {exchangeNetflow?.change?.week ? (
+                {bitcoinNetflow?.diff7d ? (
                   <>
                     <strong>7D</strong>{' '}
+                    <span>{formatBigNumber(bitcoinNetflow.diff7d)} BTC</span>
                     <span>
-                      {bigNumberFormatter.format(exchangeNetflow.change.week)}{' '}
-                      BTC
+                      {bitcoinNetflow.percentageChange7d > 0 ? ' ▲ ' : ' ▼ '}
+                      {percentageWithSignFormatter.format(
+                        bitcoinNetflow.percentageChange7d / 100,
+                      )}
                     </span>
                   </>
                 ) : (
@@ -133,12 +134,15 @@ const CoreData = () => {
                 )}
               </li>
               <li>
-                {exchangeNetflow?.change?.month ? (
+                {bitcoinNetflow?.diff30d ? (
                   <>
                     <strong>30D</strong>{' '}
+                    <span>{formatBigNumber(bitcoinNetflow.diff30d)} BTC</span>
                     <span>
-                      {bigNumberFormatter.format(exchangeNetflow.change.month)}{' '}
-                      BTC
+                      {bitcoinNetflow.percentageChange30d > 0 ? ' ▲ ' : ' ▼ '}
+                      {percentageWithSignFormatter.format(
+                        bitcoinNetflow.percentageChange30d / 100,
+                      )}
                     </span>
                   </>
                 ) : (
@@ -223,14 +227,14 @@ const CoreData = () => {
           ))}
       </ul>
     ),
-    [funding, leverage, exchangeNetflow, ndx, spx, dji],
+    [funding, leverage, bitcoinNetflow, ndx, spx, dji],
   );
 
   return (
     <div className={styles.container}>
       <div
         className={`${styles.data} ${
-          exchangeNetflow && leverage && funding && tradfi.length
+          bitcoinNetflow && leverage && funding && tradfi.length
             ? styles.loaded
             : ''
         }`}

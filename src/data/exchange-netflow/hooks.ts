@@ -13,7 +13,7 @@ export const useExchangeNetflow = (coinId: string, refreshInterval = 30000) => {
   );
 
   const exchangeNetflow = useMemo(() => {
-    return responseExchangeNetflow.data?.data?.total;
+    return responseExchangeNetflow.data?.data;
   }, [responseExchangeNetflow]);
 
   return useMemo(() => ({ exchangeNetflow }), [exchangeNetflow]);
