@@ -35,6 +35,7 @@ const fundingFormatter = new Intl.NumberFormat('en-US', {
 
 const CoreData = () => {
   const { exchangeNetflow: bitcoinNetflow } = useExchangeNetflow('bitcoin');
+  const { exchangeNetflow: ethereumNetflow } = useExchangeNetflow('ethereum');
   const { leverage } = useLeverage();
   const { funding } = useFunding();
   const { ndx, spx, dji, tradfi } = useTradfi();
@@ -154,6 +155,61 @@ const CoreData = () => {
         </li>
         <li className={styles.entry}>
           <div>
+            <strong className={styles.title}>Ethereum exchange netflow</strong>
+            <ul>
+              <li>
+                {ethereumNetflow?.diff24h ? (
+                  <>
+                    <strong>24H</strong>{' '}
+                    <span>{formatBigNumber(ethereumNetflow.diff24h)} ETH</span>
+                    <span>
+                      {ethereumNetflow.percentageChange24h > 0 ? ' ▲ ' : ' ▼ '}
+                      {percentageWithSignFormatter.format(
+                        ethereumNetflow.percentageChange24h / 100,
+                      )}
+                    </span>
+                  </>
+                ) : (
+                  <TextSpinner />
+                )}
+              </li>
+              <li>
+                {ethereumNetflow?.diff7d ? (
+                  <>
+                    <strong>7D</strong>{' '}
+                    <span>{formatBigNumber(ethereumNetflow.diff7d)} ETH</span>
+                    <span>
+                      {ethereumNetflow.percentageChange7d > 0 ? ' ▲ ' : ' ▼ '}
+                      {percentageWithSignFormatter.format(
+                        ethereumNetflow.percentageChange7d / 100,
+                      )}
+                    </span>
+                  </>
+                ) : (
+                  <TextSpinner />
+                )}
+              </li>
+              <li>
+                {ethereumNetflow?.diff30d ? (
+                  <>
+                    <strong>30D</strong>{' '}
+                    <span>{formatBigNumber(ethereumNetflow.diff30d)} ETH</span>
+                    <span>
+                      {ethereumNetflow.percentageChange30d > 0 ? ' ▲ ' : ' ▼ '}
+                      {percentageWithSignFormatter.format(
+                        ethereumNetflow.percentageChange30d / 100,
+                      )}
+                    </span>
+                  </>
+                ) : (
+                  <TextSpinner />
+                )}
+              </li>
+            </ul>
+          </div>
+        </li>
+        <li className={styles.entry}>
+          <div>
             <strong className={styles.title}>Leverage in the market</strong>
             <ul>
               <li>
@@ -227,7 +283,7 @@ const CoreData = () => {
           ))}
       </ul>
     ),
-    [funding, leverage, bitcoinNetflow, ndx, spx, dji],
+    [funding, leverage, bitcoinNetflow, ethereumNetflow, ndx, spx, dji],
   );
 
   return (
