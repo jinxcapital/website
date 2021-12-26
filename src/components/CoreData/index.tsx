@@ -44,7 +44,7 @@ const CoreData = () => {
       <ul className={styles.coreData}>
         <li className={styles.entry}>
           <div>
-            <strong className={styles.title}>Tradfi US stock markets</strong>
+            <strong className={styles.title}>US stock indexes</strong>
             <ul>
               <li>
                 {spx ? (
