@@ -181,14 +181,6 @@ const CoreData = () => {
                     <span>
                       {formatCurrenyCompact(leverage?.liquidations24h)}
                     </span>
-                    {leverage?.liquidations24hChange && (
-                      <span>
-                        {leverage.liquidations24hChange > 0 ? ' ▲ ' : ' ▼ '}
-                        {percentageWithSignFormatter.format(
-                          leverage.liquidations24hChange / 100,
-                        )}
-                      </span>
-                    )}
                   </>
                 ) : (
                   <TextSpinner />
