@@ -163,7 +163,7 @@ const CoreData = () => {
                     <span>{formatCurrenyCompact(leverage?.openInterest)}</span>
                     {leverage?.openInterestChange && (
                       <span>
-                        {leverage.openInterestChange > 0 ? '▲ ' : '▼ '}
+                        {leverage.openInterestChange > 0 ? ' ▲ ' : ' ▼ '}
                         {percentageWithSignFormatter.format(
                           leverage.openInterestChange / 100,
                         )}
@@ -183,7 +183,7 @@ const CoreData = () => {
                     </span>
                     {leverage?.liquidations24hChange && (
                       <span>
-                        {leverage.liquidations24hChange > 0 ? '▲ ' : '▼ '}
+                        {leverage.liquidations24hChange > 0 ? ' ▲ ' : ' ▼ '}
                         {percentageWithSignFormatter.format(
                           leverage.liquidations24hChange / 100,
                         )}
