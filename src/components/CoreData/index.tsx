@@ -159,7 +159,7 @@ const CoreData = () => {
               <li>
                 {leverage?.openInterest ? (
                   <>
-                    <strong>Open interest</strong>{' '}
+                    <strong>OI</strong>{' '}
                     <span>{formatCurrenyCompact(leverage?.openInterest)}</span>
                     {leverage?.openInterestChange && (
                       <span>
