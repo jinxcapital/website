@@ -1,7 +1,7 @@
 .container {
   @apply flex-1;
   @apply flex flex-col;
-  @apply px-20 py-16;
+  @apply px-16 py-12;
 
   @media (max-width: 768px) {
     @apply px-12 py-10;
