@@ -113,7 +113,7 @@ const Header = () => {
       {!!coins.length && (
         <div className={styles.scroller}>
           <ul className={styles.coins}>
-            {[...coins, ...coins].map((coin: Coin, index: number) => (
+            {[...coins, ...coins, ...coins].map((coin: Coin, index: number) => (
               <li
                 key={`scroller-coin-${coin.id}:${index}`}
                 className={styles.coin}

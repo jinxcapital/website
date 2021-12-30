@@ -249,6 +249,7 @@ const CoreData = () => {
       >
         <CoreData />
         <CoreData />
+        <CoreData />
       </div>
     </div>
   );
