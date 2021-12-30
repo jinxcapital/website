@@ -27,7 +27,7 @@
 
     & > li {
       @apply mb-2;
-      @apply border-2 border-tint-dark p-1;
+      @apply border-2 border-tint-secondary p-1;
       @apply rounded-lg;
       @apply cursor-pointer;
 
@@ -38,30 +38,30 @@
       & .content {
         @apply hidden;
         @apply -mx-1.5 px-2 mt-1.5 pt-1.5;
-        @apply border-t border-tint-light border-opacity-10;
+        @apply border-t border-tint-primary border-opacity-10;
       }
 
       @media (min-width: 540px) {
         &:hover {
-          @apply bg-tint-dark;
-          @apply text-tint-light;
+          @apply bg-tint-secondary;
+          @apply text-tint-primary;
           @apply ring-0 outline-none;
 
           & .method {
-            @apply text-tint-dark;
-            @apply bg-tint-light;
+            @apply text-tint-secondary;
+            @apply bg-tint-primary;
           }
         }
       }
 
       & .method {
         @apply font-semibold font-mono;
-        @apply bg-tint-dark;
+        @apply bg-tint-secondary;
         @apply p-1 px-3;
         @apply rounded;
         @apply mr-2;
 
-        @apply text-tint-light;
+        @apply text-tint-primary;
       }
 
       & .path {
@@ -74,13 +74,13 @@
       }
 
       &.focus {
-        @apply bg-tint-dark;
-        @apply text-tint-light;
+        @apply bg-tint-secondary;
+        @apply text-tint-primary;
         @apply ring-0 outline-none;
 
         & .method {
-          @apply text-tint-dark;
-          @apply bg-tint-light;
+          @apply text-tint-secondary;
+          @apply bg-tint-primary;
         }
 
         & .content {
