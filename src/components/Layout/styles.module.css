@@ -3,11 +3,11 @@
   @apply flex flex-col;
   @apply px-16 py-12;
 
-  @media (max-width: 768px) {
+  @media (max-width: 1024px) {
     @apply px-12 py-10;
   }
 
-  @media (max-width: 640px) {
+  @media (max-width: 768px) {
     @apply px-6 py-8;
   }
 
@@ -15,7 +15,7 @@
     @apply flex-1;
     @apply mt-6;
 
-    @media (max-width: 640px) {
+    @media (max-width: 768px) {
       @apply mt-4;
     }
 
