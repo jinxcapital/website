@@ -2,7 +2,7 @@ import { useContext, useMemo } from 'react';
 
 import { CoinsContext } from './context';
 
-export const useCoins = (limit = 15) => {
+export const useCoins = (limit = 25) => {
   const { coins, bitcoin } = useContext(CoinsContext);
 
   return useMemo(() => {
