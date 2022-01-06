@@ -7,11 +7,9 @@ import styles from './styles.module.css';
 const Charts = () => {
   const { coins: allCoins } = useCoins();
   const coins = useMemo(() => {
-    return allCoins
-      .filter(
-        (coin) => !['usdt', 'usdc', 'dai', 'ust', 'busd'].includes(coin.symbol),
-      )
-      .slice(0, 10);
+    return allCoins.filter(
+      (coin) => !['usdt', 'usdc', 'dai', 'ust', 'busd'].includes(coin.symbol),
+    );
   }, [allCoins]);
   const previousCoins = usePreviousValue(coins);
 
