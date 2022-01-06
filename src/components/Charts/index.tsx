@@ -20,10 +20,15 @@ const Charts = () => {
           (previousCoin) => previousCoin.id === coin.id,
         );
 
+        let quote = 'usd';
+        if (['near', 'luna'].includes(coin.symbol)) {
+          quote = 'usdt';
+        }
+
         return (
           <a
             className={styles.link}
-            href={`${process.env.NEXT_PUBLIC_API_URL}/chart/${coin.symbol}:usdt.jpg`}
+            href={`${process.env.NEXT_PUBLIC_API_URL}/chart/${coin.symbol}:${quote}.jpg`}
             key={`chart-${coin.id}`}
             target="_blank"
             rel="noreferrer"
@@ -31,16 +36,16 @@ const Charts = () => {
             <img
               src={`${process.env.NEXT_PUBLIC_API_URL}/chart/${
                 (previousCoin || coin).symbol
-              }:usdt.jpg?${(previousCoin || coin).price}`}
-              alt={`${(previousCoin || coin).symbol}:usdt.jpg`}
+              }:${quote}.jpg?${(previousCoin || coin).price}`}
+              alt={`${(previousCoin || coin).symbol}:${quote}.jpg`}
               loading="lazy"
               width="640"
               height="360"
             />
             {previousCoin && (
               <img
-                src={`${process.env.NEXT_PUBLIC_API_URL}/chart/${coin.symbol}:usdt.jpg?${coin.price}`}
-                alt={`${coin.symbol}:usdt.jpg`}
+                src={`${process.env.NEXT_PUBLIC_API_URL}/chart/${coin.symbol}:${quote}.jpg?${coin.price}`}
+                alt={`${coin.symbol}:${quote}.jpg`}
                 loading="lazy"
                 width="640"
                 height="360"
