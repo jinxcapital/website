@@ -100,7 +100,7 @@
         @media (max-width: 540px) {
           @apply m-0 p-2 pl-7;
           @apply leading-none;
-          @apply bg-white bg-opacity-5;
+          @apply bg-tint-primary bg-opacity-5;
         }
       }
 
