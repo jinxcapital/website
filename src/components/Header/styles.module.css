@@ -201,11 +201,13 @@
           @apply text-red-600;
         }
 
-        &.percentageUp {
+        &.percentageUp,
+        &.valueUp {
           @apply bg-green-100;
         }
 
-        &.percentageDown {
+        &.percentageDown,
+        &.valueDown {
           @apply bg-red-100;
         }
       }

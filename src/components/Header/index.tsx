@@ -126,25 +126,43 @@ const Header = () => {
                     ? formatCurrency(coin.price)
                     : coin.price >= 0.01
                     ? formatCurrencySmall(coin.price)
-                    : formatCurrencyExtraSmall(coin.price)}{' '}
+                    : formatCurrencyExtraSmall(coin.price)}
+                </span>{' '}
+                {coin.priceChange24h && (
                   <span
-                    className={
-                      coin.percentageChange24h > 0
-                        ? styles.arrowUp
-                        : styles.arrowDown
-                    }
-                  >
-                    {coin.percentageChange24h > 0 ? '▲' : '▼'}
-                  </span>{' '}
-                  <span
-                    className={`${styles.percentage} ${
-                      coin.percentageChange24h > 0
-                        ? styles.percentageUp
-                        : styles.percentageDown
+                    className={`${styles.priceChange} ${
+                      coin.priceChange24h > 0
+                        ? styles.valueUp
+                        : styles.valueDown
                     }`}
                   >
-                    {formatPercentage(coin.percentageChange24h / 100)}
+                    {coin.priceChange24h > 0 && '+'}
+                    {coin.priceChange24h >= 1000
+                      ? formatCurrenyBig(coin.priceChange24h)
+                      : coin.priceChange24h >= 0.1
+                      ? formatCurrency(coin.priceChange24h)
+                      : coin.priceChange24h >= 0.01
+                      ? formatCurrencySmall(coin.priceChange24h)
+                      : formatCurrencyExtraSmall(coin.priceChange24h)}
                   </span>
+                )}
+                <span
+                  className={
+                    coin.percentageChange24h > 0
+                      ? styles.arrowUp
+                      : styles.arrowDown
+                  }
+                >
+                  {coin.percentageChange24h > 0 ? '▲' : '▼'}
+                </span>{' '}
+                <span
+                  className={`${styles.percentage} ${
+                    coin.percentageChange24h > 0
+                      ? styles.percentageUp
+                      : styles.percentageDown
+                  }`}
+                >
+                  {formatPercentage(coin.percentageChange24h / 100)}
                 </span>
               </li>
             ))}
