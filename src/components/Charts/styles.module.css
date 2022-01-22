@@ -1,17 +1,18 @@
 .container {
+  @apply -mt-0.5;
   @apply block;
   @apply overflow-x-auto whitespace-nowrap;
 
   scroll-snap-type: x mandatory;
 
   @media (max-width: 960px) {
-    @apply -mr-4;
+    @apply -mr-6;
   }
 
   & .link {
     @apply inline-block;
     @apply relative;
-    @apply mr-4;
+    @apply mr-6;
 
     scroll-snap-align: start;
   }

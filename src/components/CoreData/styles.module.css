@@ -7,7 +7,7 @@
 .container {
   @apply overflow-hidden whitespace-nowrap;
   @apply text-sm leading-tight;
-  @apply mb-6;
+  @apply mb-7;
   @apply relative;
 
   @media (max-width: 540px) {
