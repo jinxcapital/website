@@ -34,7 +34,7 @@
     & .entry {
       @apply inline-block;
       @apply border-l border-tint-secondary;
-      @apply mr-4;
+      @apply mr-6;
 
       border-left-width: 5px;
 
