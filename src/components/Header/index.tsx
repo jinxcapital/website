@@ -128,24 +128,6 @@ const Header = () => {
                     ? formatCurrencySmall(coin.price)
                     : formatCurrencyExtraSmall(coin.price)}
                 </span>{' '}
-                {coin.priceChange24h && (
-                  <span
-                    className={`${styles.priceChange} ${
-                      coin.priceChange24h > 0
-                        ? styles.valueUp
-                        : styles.valueDown
-                    }`}
-                  >
-                    {coin.priceChange24h > 0 && '+'}
-                    {coin.priceChange24h >= 1000
-                      ? formatCurrenyBig(coin.priceChange24h)
-                      : coin.priceChange24h >= 0.1
-                      ? formatCurrency(coin.priceChange24h)
-                      : coin.priceChange24h >= 0.01
-                      ? formatCurrencySmall(coin.priceChange24h)
-                      : formatCurrencyExtraSmall(coin.priceChange24h)}
-                  </span>
-                )}
                 <span
                   className={
                     coin.percentageChange24h > 0
@@ -155,6 +137,26 @@ const Header = () => {
                 >
                   {coin.percentageChange24h > 0 ? '▲' : '▼'}
                 </span>{' '}
+                {coin.priceChange24h && (
+                  <>
+                    <span
+                      className={`${styles.priceChange} ${
+                        coin.priceChange24h > 0
+                          ? styles.valueUp
+                          : styles.valueDown
+                      }`}
+                    >
+                      {coin.priceChange24h > 0 && '+'}
+                      {Math.abs(coin.priceChange24h) >= 1000
+                        ? formatCurrenyBig(coin.priceChange24h)
+                        : Math.abs(coin.priceChange24h) >= 0.1
+                        ? formatCurrency(coin.priceChange24h)
+                        : Math.abs(coin.priceChange24h) >= 0.01
+                        ? formatCurrencySmall(coin.priceChange24h)
+                        : formatCurrencyExtraSmall(coin.priceChange24h)}
+                    </span>{' '}
+                  </>
+                )}
                 <span
                   className={`${styles.percentage} ${
                     coin.percentageChange24h > 0
