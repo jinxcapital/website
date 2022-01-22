@@ -192,6 +192,22 @@
         @apply inline-block;
 
         font-variant-numeric: tabular-nums;
+
+        &.arrowUp {
+          @apply text-green-600;
+        }
+
+        &.arrowDown {
+          @apply text-red-600;
+        }
+
+        &.percentageUp {
+          @apply bg-green-100;
+        }
+
+        &.percentageDown {
+          @apply bg-red-100;
+        }
       }
     }
   }

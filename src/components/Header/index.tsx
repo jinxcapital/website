@@ -127,8 +127,22 @@ const Header = () => {
                     : coin.price >= 0.01
                     ? formatCurrencySmall(coin.price)
                     : formatCurrencyExtraSmall(coin.price)}{' '}
-                  {coin.percentageChange24h > 0 ? '▲' : '▼'}{' '}
-                  <span>
+                  <span
+                    className={
+                      coin.percentageChange24h > 0
+                        ? styles.arrowUp
+                        : styles.arrowDown
+                    }
+                  >
+                    {coin.percentageChange24h > 0 ? '▲' : '▼'}
+                  </span>{' '}
+                  <span
+                    className={`${styles.percentage} ${
+                      coin.percentageChange24h > 0
+                        ? styles.percentageUp
+                        : styles.percentageDown
+                    }`}
+                  >
                     {formatPercentage(coin.percentageChange24h / 100)}
                   </span>
                 </span>
