@@ -62,7 +62,7 @@ const Header = () => {
               <li className={styles.dropdownHeading}>Socials</li>
               <li className={styles.dropdownLink}>
                 <a
-                  href="https://github.com/0xpowder"
+                  href="https://github.com/jinxcapital"
                   target="_blank"
                   rel="noreferrer"
                 >
@@ -71,7 +71,7 @@ const Header = () => {
               </li>
               <li className={styles.dropdownLink}>
                 <a
-                  href="https://twitter.com/0xpowder"
+                  href="https://twitter.com/jinxcapital"
                   target="_blank"
                   rel="noreferrer"
                 >
@@ -80,7 +80,7 @@ const Header = () => {
               </li>
               <li className={`${styles.dropdownLink} ${styles.last}`}>
                 <a
-                  href="https://tradingview.com/u/powder0x"
+                  href="https://tradingview.com/u/jinxcapital"
                   target="_blank"
                   rel="noreferrer"
                 >

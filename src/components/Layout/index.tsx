@@ -25,7 +25,7 @@ const Layout = ({ title, description, children }: Props) => {
         )}
         <meta name="twitter:card" content="summary_large_image" />
         <meta name="twitter:site" content="@jinxcapital" />
-        <meta name="twitter:creator" content="@0xpowder" />
+        <meta name="twitter:creator" content="@jinxcapital" />
         <meta
           name="twitter:image"
           content={`${process.env.NEXT_PUBLIC_API_URL}/chart/btc:usd.jpg`}

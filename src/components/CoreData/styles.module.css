@@ -20,7 +20,7 @@
     will-change: transform;
 
     &.loaded {
-      animation: scroll 46s linear infinite 3s;
+      animation: scroll 50s linear infinite 3s;
     }
 
     &:hover {

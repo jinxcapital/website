@@ -18,14 +18,14 @@ const Landing = () => {
 
   const description = useMemo(() => {
     if (bitcoin) {
-      return `Jinx Capital is a fictive cryptonative investment fund of @0xpowder. Btw the price of Bitcoin changed with ${formatPercentage(
+      return `Jinx Capital is a fictive cryptonative investment fund. The price of Bitcoin changed with ${formatPercentage(
         bitcoin.percentageChange24h / 100,
       )} in the last 24h and is currently sitting at ${formatCurrency(
         bitcoin.price,
       )}!`;
     }
 
-    return 'Jinx Capital is a fictive cryptonative investment fund of @0xpowder.';
+    return 'Jinx Capital is a fictive cryptonative investment fund.';
   }, [bitcoin]);
 
   return (
