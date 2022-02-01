@@ -173,7 +173,7 @@
       @apply inline-block;
 
       will-change: transform;
-      animation: scroll 100s linear infinite 3s;
+      animation: scroll 110s linear infinite 3s;
 
       &:hover {
         animation-play-state: paused;
