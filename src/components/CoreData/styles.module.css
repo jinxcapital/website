@@ -36,6 +36,10 @@
       @apply border-l border-tint-secondary;
       @apply mr-6;
 
+      @media (max-width: 1024px) {
+        @apply mr-4;
+      }
+
       border-left-width: 5px;
 
       & > div {
