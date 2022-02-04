@@ -99,7 +99,7 @@ const Header = () => {
               </li>
               <li className={`${styles.dropdownLink} ${styles.last}`}>
                 <a
-                  href="https://app.coinmarketman.com/exchanges/?rf=38514"
+                  href="https://app.coinmarketman.com/exchanges/?rf=42544"
                   target="_blank"
                   rel="noreferrer"
                 >
