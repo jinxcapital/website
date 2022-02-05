@@ -4,7 +4,7 @@ import useSWR from 'swr';
 
 const fetcher = (url: string) => fetch(url).then((r) => r.json());
 
-export const useFunding = (refreshInterval = 30000) => {
+export const useFunding = (refreshInterval = 60000) => {
   const { coins } = useCoins(100);
   const responseFunding = useSWR(
     `${process.env.NEXT_PUBLIC_API_URL}/funding`,

@@ -5,7 +5,7 @@ import type { AppProps } from 'next/app';
 
 function App({ Component, pageProps }: AppProps) {
   return (
-    <CoinsContextProvider refreshInterval={15000}>
+    <CoinsContextProvider refreshInterval={30000}>
       <Component {...pageProps} />
     </CoinsContextProvider>
   );

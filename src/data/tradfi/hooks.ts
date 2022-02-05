@@ -3,7 +3,7 @@ import useSWR from 'swr';
 
 const fetcher = (url: string) => fetch(url).then((r) => r.json());
 
-export const useTradfi = (refreshInterval = 20000) => {
+export const useTradfi = (refreshInterval = 60000) => {
   const responseTrafi = useSWR(
     `${process.env.NEXT_PUBLIC_API_URL}/tradfi`,
     fetcher,
