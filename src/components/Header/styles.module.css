@@ -173,7 +173,7 @@
       @apply inline-block;
 
       will-change: transform;
-      animation: scroll 110s linear infinite 3s;
+      animation: scroll 80s linear infinite 3s;
 
       &:hover {
         animation-play-state: paused;
@@ -193,7 +193,7 @@
 
         font-variant-numeric: tabular-nums;
 
-        &.arrowUp {
+        /* &.arrowUp {
           @apply text-green-600;
         }
 
@@ -209,7 +209,7 @@
         &.percentageDown,
         &.valueDown {
           @apply bg-red-100;
-        }
+        } */
       }
     }
   }
