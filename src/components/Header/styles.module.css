@@ -23,7 +23,7 @@
 
       & a {
         @apply inline-block align-middle whitespace-nowrap;
-        @apply py-1.5 px-4;
+        @apply py-1.5 px-3;
         @apply border border-solid border-tint-secondary;
         @apply text-sm font-bold;
         @apply cursor-pointer;
