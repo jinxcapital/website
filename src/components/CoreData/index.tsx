@@ -1,10 +1,9 @@
 import TextSpinner from 'components/TextSpinner';
-import { useExchangeNetflow } from 'data/exchange-netflow/hooks';
 import { useFunding } from 'data/funding/hooks';
 import { useLeverage } from 'data/leverage/hooks';
 import { useTradfi } from 'data/tradfi/hooks';
 import { useCallback } from 'react';
-import { formatBigNumber, formatCurrenyCompact } from 'utils/formatters';
+import { formatCurrenyCompact } from 'utils/formatters';
 
 import styles from './styles.module.css';
 
@@ -34,7 +33,6 @@ const fundingFormatter = new Intl.NumberFormat('en-US', {
 });
 
 const CoreData = () => {
-  const { exchangeNetflow: bitcoinNetflow } = useExchangeNetflow('bitcoin');
   const { leverage } = useLeverage();
   const { funding } = useFunding();
   const { ndx, spx, dji, tradfi } = useTradfi();
@@ -87,61 +85,6 @@ const CoreData = () => {
                       {dji.percentageChange > 0 ? '▲ ' : '▼ '}
                       {percentageWithSignFormatter.format(
                         dji.percentageChange / 100,
-                      )}
-                    </span>
-                  </>
-                ) : (
-                  <TextSpinner />
-                )}
-              </li>
-            </ul>
-          </div>
-        </li>
-        <li className={styles.entry}>
-          <div>
-            <strong className={styles.title}>Bitcoin exchange netflow</strong>
-            <ul>
-              <li>
-                {bitcoinNetflow?.diff24h ? (
-                  <>
-                    <strong>24H</strong>{' '}
-                    <span>{formatBigNumber(bitcoinNetflow.diff24h)} BTC</span>
-                    <span>
-                      {bitcoinNetflow.percentageChange24h > 0 ? ' ▲ ' : ' ▼ '}
-                      {percentageWithSignFormatter.format(
-                        bitcoinNetflow.percentageChange24h / 100,
-                      )}
-                    </span>
-                  </>
-                ) : (
-                  <TextSpinner />
-                )}
-              </li>
-              <li>
-                {bitcoinNetflow?.diff7d ? (
-                  <>
-                    <strong>7D</strong>{' '}
-                    <span>{formatBigNumber(bitcoinNetflow.diff7d)} BTC</span>
-                    <span>
-                      {bitcoinNetflow.percentageChange7d > 0 ? ' ▲ ' : ' ▼ '}
-                      {percentageWithSignFormatter.format(
-                        bitcoinNetflow.percentageChange7d / 100,
-                      )}
-                    </span>
-                  </>
-                ) : (
-                  <TextSpinner />
-                )}
-              </li>
-              <li>
-                {bitcoinNetflow?.diff30d ? (
-                  <>
-                    <strong>30D</strong>{' '}
-                    <span>{formatBigNumber(bitcoinNetflow.diff30d)} BTC</span>
-                    <span>
-                      {bitcoinNetflow.percentageChange30d > 0 ? ' ▲ ' : ' ▼ '}
-                      {percentageWithSignFormatter.format(
-                        bitcoinNetflow.percentageChange30d / 100,
                       )}
                     </span>
                   </>
@@ -235,16 +178,14 @@ const CoreData = () => {
           ))}
       </ul>
     ),
-    [funding, leverage, bitcoinNetflow, ndx, spx, dji],
+    [funding, leverage, ndx, spx, dji],
   );
 
   return (
     <div className={styles.container}>
       <div
         className={`${styles.data} ${
-          bitcoinNetflow && leverage && funding && tradfi.length
-            ? styles.loaded
-            : ''
+          leverage && funding && tradfi.length ? styles.loaded : ''
         }`}
       >
         <CoreData />
